@@ -1,0 +1,174 @@
+{
+  "project_name": "MAZA Vienna",
+  "theme": "dark",
+  "colors": {
+    "background": {
+      "primary": "#071E19",
+      "secondary": "#08231D",
+      "tertiary": "#171B19"
+    },
+    "brand": {
+      "green": "#3A5F54",
+      "gold": "#B19963",
+      "gold_subtle": "rgba(177, 153, 99, 0.3)"
+    },
+    "text": {
+      "primary": "#F3EFE6",
+      "secondary": "rgba(243, 239, 230, 0.7)",
+      "accent": "#B19963",
+      "inverse": "#071E19"
+    }
+  },
+  "typography": {
+    "instructions": "Brand font 'TT Modernoir' is unavailable. Use 'Cormorant Garamond' for elegant, high-contrast, editorial display headings (echoing the luxury/geometric Art-Deco feel with wide uppercase tracking) and 'Jost' for structural body text (Art-Deco inspired geometric sans). Add these to Google Fonts import.",
+    "fonts": {
+      "heading": "'Cormorant Garamond', serif",
+      "body": "'Jost', sans-serif"
+    },
+    "scales": {
+      "h1": "text-5xl md:text-7xl lg:text-8xl font-light tracking-[0.2em] uppercase",
+      "h2": "text-4xl md:text-5xl lg:text-6xl font-light tracking-wide",
+      "h3": "text-2xl md:text-3xl lg:text-4xl font-light",
+      "h4": "text-xl md:text-2xl tracking-widest uppercase text-[#B19963]",
+      "body": "text-base md:text-lg font-light leading-relaxed tracking-wide",
+      "overline": "text-xs md:text-sm tracking-[0.3em] uppercase text-[#B19963]"
+    }
+  },
+  "visual_enhancers": {
+    "surface_strategies": [
+      {
+        "name": "glassmorphism",
+        "usage": "Sticky headers and floating elements. Must use bg-[#071E19]/80 with backdrop-blur-xl and border-b border-[#B19963]/20."
+      },
+      {
+        "name": "borders",
+        "usage": "Use fine gold lines border-[#B19963]/30 for dividing sections, framing images, and button borders. No heavy/thick borders."
+      },
+      {
+        "name": "shadows",
+        "usage": "Soft ambient shadows shadow-[0_10px_40px_rgba(0,0,0,0.5)]. Avoid harsh drop shadows."
+      }
+    ],
+    "patterns": "Subtle oriental/geometric background pattern overlays (opacity-5 mix-blend-overlay). Do not use busy patterns."
+  },
+  "layouts": {
+    "spacing": "Generous spacing. Sections should have py-24 to py-32. Elements should breathe.",
+    "grid": "Bento 'Tetris' Grid for asymmetric image galleries (col-span-full to col-span-4). No generic cards."
+  },
+  "motion": {
+    "libraries": [
+      "framer-motion",
+      "lenis",
+      "react-fast-marquee"
+    ],
+    "instructions": "Use Lenis for smooth momentum scrolling. Framer Motion for scroll-reveals (y: 50, opacity: 0 -> y: 0, opacity: 1, duration: 1s, ease: [0.16, 1, 0.3, 1]). Kinetic hero with masked line-by-line reveal for headings (using overflow-hidden wrappers). Slow editorial marquee for brand text. Use parallax for the hero image."
+  },
+  "component_guidelines": {
+    "buttons": "Elegant minimalist. 1px fine gold border. Transparent background default, filled gold on hover with text-inverse. Avoid default pill shapes, favor sharp or very slightly rounded edges.",
+    "navigation": "Transparent at top, transitions to glassmorphic dark green on scroll. Links spaced out generously.",
+    "cards": "DO NOT use generic white/gray cards. Use dark surfaces (#08231D) with fine gold borders and high-quality edge-to-edge image crops.",
+    "form": "LazyForms integration. Dark minimalist inputs with gold bottom-border only (border-b border-[#B19963]/40). No fully enclosed input boxes. Elegant error/success states."
+  },
+  "sections_blueprint": [
+    {
+      "name": "Header",
+      "layout": "Fixed, z-50, transition from bg-transparent to backdrop-blur-xl bg-[#071E19]/90. Nav links (Home, Über MAZA, Menü, Galerie, Reservierung, Kontakt) + Gold 'Tisch reservieren' button."
+    },
+    {
+      "name": "Hero",
+      "layout": "Full-height (min-h-screen). Cinematic atmospheric background image. Large kinetic masked text reveal. Parallax scroll effect. Subtle gold accents."
+    },
+    {
+      "name": "Über MAZA (Story)",
+      "layout": "Asymmetric layout. Large atmospheric image offset with a generous text block. Large editorial typography."
+    },
+    {
+      "name": "Signature Dishes",
+      "layout": "Editorial grid. 3-4 dishes. No cards. High-end food photography with spotlight treatment. Fine gold lines separating items."
+    },
+    {
+      "name": "Kulinarische Philosophie",
+      "layout": "Numbered manifesto format (01 to 05). Fine gold line-icons (lucide-react). 'Tradition, Kultur, Qualität, Gastfreundschaft, Orient'. Vertical timeline or horizontal elegant structure."
+    },
+    {
+      "name": "Menu Preview",
+      "layout": "Elegant typographic lists. Dotted gold lines connecting dish to price. Clean readable body font."
+    },
+    {
+      "name": "Gallery",
+      "layout": "Asymmetric Bento grid. Mix of landscape and portrait crops. Lightbox integration."
+    },
+    {
+      "name": "Reservation",
+      "layout": "Premium section. Centered form or two-col layout. Minimalist inputs. Validated states. Gold primary CTA."
+    },
+    {
+      "name": "Location & Contact",
+      "layout": "Two column. Contact details and elegant dark-themed placeholder map block."
+    },
+    {
+      "name": "Footer",
+      "layout": "Dark green background. Generous padding. Large typographic brand logo. Fine gold dividers."
+    }
+  ],
+  "image_urls": {
+    "hero_atmosphere": [
+      {
+        "url": "https://images.unsplash.com/photo-1661422586023-681ea60507e2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzR8MHwxfHNlYXJjaHwzfHxsdXh1cnklMjByZXN0YXVyYW50JTIwaW50ZXJpb3IlMjBkYXJrJTIwbW9vZHklMjBnb2xkfGVufDB8fHx8MTc4Mjg5NzgzNXww&ixlib=rb-4.1.0&q=85",
+        "description": "Moody luxury restaurant interior with gold lighting",
+        "category": "hero_background"
+      }
+    ],
+    "food_photography": [
+      {
+        "url": "https://images.unsplash.com/photo-1663530761401-15eefb544889?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzN8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBmaW5lJTIwZGluaW5nJTIwcGxhdGluZyUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc4MzQ4MTcxM3ww&ixlib=rb-4.1.0&q=85",
+        "description": "Chef pouring sauce over plated dish on dark background",
+        "category": "signature_dish"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1611520175743-30ff00129621?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzN8MHwxfHNlYXJjaHwyfHxsdXh1cnklMjBmaW5lJTIwZGluaW5nJTIwcGxhdGluZyUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc4MzQ4MTcxM3ww&ixlib=rb-4.1.0&q=85",
+        "description": "Elegant dark plating of fine dining food",
+        "category": "signature_dish"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1621494268492-d01b98eba7e4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzN8MHwxfHNlYXJjaHwzfHxsdXh1cnklMjBmaW5lJTIwZGluaW5nJTIwcGxhdGluZyUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc4MzQ4MTcxM3ww&ixlib=rb-4.1.0&q=85",
+        "description": "Luxury dining eating action dark aesthetic",
+        "category": "gallery"
+      }
+    ],
+    "patterns": [
+      {
+        "url": "https://images.unsplash.com/photo-1557411732-1797a9171fcf?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHwyfHxzdWJ0bGUlMjBkYXJrJTIwZ2VvbWV0cmljJTIwcGF0dGVybiUyMHRleHR1cmV8ZW58MHx8fHwxNzgzOTAxODc2fDA&ixlib=rb-4.1.0&q=85",
+        "description": "Subtle dark geometric pattern for backgrounds",
+        "category": "background_texture"
+      }
+    ]
+  },
+  "accessibility": {
+    "contrast_requirements": "All text must have a minimum 4.5:1 contrast ratio against the dark green background.",
+    "testing_attributes": "All interactive elements MUST include a data-testid attribute (e.g., data-testid='nav-link-home', data-testid='reservation-submit-button')."
+  },
+  "instructions_to_main_agent": [
+    "Use pure HTML + Tailwind for complex asymmetric layouts, avoid standard Shadcn cards which look too generic.",
+    "Install and configure 'lucide-react' for fine-line icons (set strokeWidth={1} for a high-end look).",
+    "Install 'lenis' (or @studio-freight/react-lenis), 'framer-motion', and 'react-fast-marquee'.",
+    "Configure Google Fonts for 'Cormorant Garamond' and 'Jost' in your index.html or global css.",
+    "Implement the LazyForms reservation section using basic customized HTML forms with Tailwind.",
+    "Ensure the hero heading uses Framer Motion for a line-by-line staggered masked reveal.",
+    "For the philosophy section, strictly use numbered elements (01, 02...) combined with lucide icons and fine gold lines.",
+    "No generic buttons. Buttons must be transparent with a 1px gold border, hovering to filled gold. Text must contrast well.",
+    "Keep backgrounds predominantly #071E19. Use #F3EFE6 for text.",
+    "Do not use complete transparent backgrounds for headers where content scrolls underneath. Use backdrop-blur-xl bg-[#071E19]/80."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Do not converge toward generic, 'on distribution' outputs. Make creative, distinctive frontends that surprise and delight.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur) where appropriate.",
+    "You MUST NOT apply universal transition. Eg: transition: all. This results in breaking transforms.",
+    "You MUST NOT center align the app container, ie do not add .App { text-align: center; } in the css file.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Subtle grain textures, noise overlays, custom cursors, selection states, and loading animations separate good from extraordinary.",
+    "All interactive elements MUST include a data-testid attribute for automated testing."
+  ]
+}
