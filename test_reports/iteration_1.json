@@ -1,0 +1,46 @@
+{
+  "summary": "Complete frontend testing of MAZA Vienna static one-page site on desktop (1440x900) and mobile (390x844). All specified data-testid elements present and functional. Hero content fully visible after animations settle (opacity 1). Scroll-reveal sections all reach opacity 1. Menu tabs, gallery lightbox, mobile menu, header nav smooth-scroll all work. Reservation form validation shows correct German errors; valid submission to LazyForms returned success state (res-success visible). No console errors, no horizontal overflow on either viewport.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Header (desktop)", "issues": ["Header background is already dark (rgba(7,30,25,0.85)) at scrollY=0 — the spec described 'transparent -> dark' transition on scroll. Backgroundcolor did not change between top and scrolled state. Minor: visual is still on-brand but the scroll state change is not visible."]}
+    ]
+  },
+  "detailed_verification": {
+    "hero_reserve_btn": {"rect": {"x": 120, "y": 623, "w": 229.89, "h": 48}, "opacity": "1", "visibility": "visible", "within_viewport": true},
+    "hero_menu_btn_visible": true,
+    "hero_heading_text_full": "Afghanische Tradition.\nModern interpretiert.",
+    "h1_span_opacity_all": "1",
+    "sections_opacity": {"about-section": "1", "signature-section": "1", "philosophy-section": "1"},
+    "signature-dish-qabeli_visible": true,
+    "nav_menue_scroll_target_y": 5888,
+    "header_reserve_btn_scroll_target_y": 8467,
+    "menu_tabs_0_to_5": "All switch content (items lengths: 139,143,132,133,128,119)",
+    "gallery_lightbox": "opens, next/prev work, close works",
+    "reservation_empty_errors_de": {"firstName": "Bitte Vorname angeben.", "lastName": "Bitte Nachname angeben.", "email": "Bitte E-Mail angeben.", "phone": "Bitte Telefonnummer angeben.", "date": "Bitte Datum wählen.", "time": "Bitte Uhrzeit wählen."},
+    "reservation_invalid_email_error": "Bitte gültige E-Mail angeben.",
+    "reservation_valid_submission_result": "res-success visible=True, res-error visible=False (LazyForms POST succeeded from container)",
+    "contact_elements_present": {"contact-route-btn": 1, "contact-call-btn": 1, "map-placeholder": 1},
+    "mobile_menu": "toggle opens fullscreen menu, nav-galerie triggers scroll, mobile-menu-close closes menu",
+    "horizontal_overflow_desktop": false,
+    "horizontal_overflow_mobile": false,
+    "console_errors": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "OPTIONAL/MINOR: If the design intent is a transparent-at-top header that darkens on scroll, currently the header uses the dark rgba(7,30,25,0.85) even at scrollY=0. Consider setting bg to transparent while !isScrolled in Header.jsx.",
+    "OPTIONAL: Consider auto-closing the mobile menu after a nav link is tapped (current behavior: menu remained open after nav-galerie click)."
+  ],
+  "critical_code_review_comments": [
+    "No critical issues. Code composition is clean: Lenis smooth-scroll wraps sections, Reveal uses whileInView, MaskedLines animates on mount — hero content is guaranteed to reach opacity 1 without depending on IntersectionObserver.",
+    "Reservation form correctly POSTs multipart/form-data to LazyForms and gracefully handles both success and error states (verified success path in this environment)."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (no backend)", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "All 11 requested test items verified on both desktop 1440x900 and mobile 390x844. Only two optional/cosmetic notes: header does not visually transition transparent->dark on scroll, and mobile menu does not auto-close after nav tap. No JS crashes, no console errors, no horizontal overflow."
+}
