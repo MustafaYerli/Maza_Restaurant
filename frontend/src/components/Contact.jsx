@@ -107,26 +107,18 @@ const Contact = () => {
 
         <Reveal delay={0.1}>
           <div
-            data-testid="map-placeholder"
-            className="relative aspect-[4/5] lg:aspect-square border border-[#B19963]/25 bg-[#08231D] overflow-hidden flex items-center justify-center"
+            data-testid="google-map"
+            className="relative aspect-[4/5] lg:aspect-square border border-[#B19963]/25 bg-[#08231D] overflow-hidden"
           >
-            <div
-              className="absolute inset-0 opacity-[0.15]"
-              style={{
-                backgroundImage:
-                  "linear-gradient(#B19963 1px, transparent 1px), linear-gradient(90deg, #B19963 1px, transparent 1px)",
-                backgroundSize: "48px 48px",
-              }}
+            <iframe
+              title="MAZA Vienna auf Google Maps"
+              src="https://www.google.com/maps?q=Gunoldstra%C3%9Fe%201%2C%201190%20Wien%20Heiligenst%C3%A4dterstra%C3%9Fe%2078&z=16&output=embed"
+              className="absolute inset-0 h-full w-full"
+              style={{ border: 0, filter: "grayscale(0.3) contrast(1.05)" }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
             />
-            <div className="relative text-center px-6">
-              <MapPin className="text-[#B19963] mx-auto mb-4" strokeWidth={1} size={40} />
-              <p className="maza-body text-[#F3EFE6]/70 text-sm tracking-wide">
-                Google-Maps-Vorschau
-              </p>
-              <p className="maza-body text-[#F3EFE6]/40 text-xs mt-2 max-w-xs">
-                Die Karte wird aus Datenschutzgründen erst nach Ihrer Zustimmung geladen.
-              </p>
-            </div>
           </div>
         </Reveal>
       </div>
