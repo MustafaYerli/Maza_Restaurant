@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Marquee items={["Tradition", "Kultur", "Gastfreundschaft", "Qualität", "Eleganz", "Authentizität"]} />
+      <Marquee items={["Gastlichkeit", "Verweilen", "Sinnlichkeit", "Morgenland", "Handwerk", "Herkunft"]} />
       <About />
       <Signature />
       <Philosophy />
