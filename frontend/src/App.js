@@ -33,7 +33,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App bg-[#071E19] text-[#F3EFE6] antialiased overflow-x-hidden">
+    <div className="App bg-[#071E19] text-[#F3EFE6] antialiased overflow-x-clip">
       <div className="grain-overlay" aria-hidden="true" />
       <BrowserRouter>
         <MotionConfig reducedMotion="user">

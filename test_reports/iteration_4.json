@@ -1,0 +1,39 @@
+{
+  "summary": "Retest of sticky category bar fix (overflow-x-clip) on /speisekarte. Sticky pinning now works correctly. No regressions on category jumps, active highlight, or horizontal overflow (desktop & mobile).",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_results": {
+    "sticky_bar_pinning": {
+      "wrapper_top_at_scrollY_0": 542,
+      "wrapper_top_at_scrollY_1800": 64,
+      "expected": "~64px pinned",
+      "status": "PASS"
+    },
+    "category_jumps": {
+      "cat-link-grill": "PASS (scrollY=2553, gold bg rgb(177,153,99), dark text)",
+      "cat-link-getraenke": "PASS (scrollY=4531, active highlight applied)",
+      "cat-link-vorspeisen": "PASS (scrollY=430, active highlight applied)"
+    },
+    "horizontal_overflow": {
+      "speisekarte_desktop_1440": false,
+      "home_desktop_1440": false,
+      "home_mobile_390": false,
+      "speisekarte_mobile_390": false,
+      "status": "PASS - no horizontal overflow introduced by overflow-x-clip change"
+    },
+    "console_errors": [],
+    "lenis_available": true
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Sticky category bar fix using overflow-x-clip confirmed working. All previously passing flows (jumps/highlight) remain intact. No horizontal overflow on any tested viewport."
+}
