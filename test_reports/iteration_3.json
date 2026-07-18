@@ -1,0 +1,32 @@
+{
+  "summary": "Retest of iteration_2 sticky bar fix on /speisekarte. Removing overflow-hidden from <main> did NOT fix the sticky bar. Root cause is one level higher: .App has Tailwind 'overflow-x-hidden' which computes to overflow-x:hidden + overflow-y:auto, creating a scroll container that traps position:sticky. Category jumps (Lenis scrollTo) and active highlight on manual scroll work correctly. Regression: 7 buttons present, horizontal scroll works, images present, back-home works, no console errors, no horizontal overflow.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "Speisekarte / App wrapper",
+        "issue": "STICKY BAR STILL NOT PINNING. At scrollY=0 wrapTop=542; at scrollY=1800 wrapTop=-1258 (scrolls with content instead of pinning at 64px). Root cause: ancestor <div class='App ... overflow-x-hidden'> in /app/frontend/src/App.js sets overflow-x:hidden which forces overflow-y to 'auto' (computed 'hidden auto'), creating a scroll container. position:sticky is scoped to that container, but the .App container itself does not scroll (window scrolls the document), so the sticky element behaves like a static element. Removing overflow-hidden from <main> alone is insufficient.",
+        "selector": ".App / [data-testid='menu-category-bar']",
+        "priority": "HIGH"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "In /app/frontend/src/App.js (or wherever the .App wrapper div is defined), remove the 'overflow-x-hidden' class, OR replace it with 'overflow-x-clip' (CSS `overflow-x: clip` does NOT create a scroll container and does not implicitly change overflow-y), OR move the horizontal overflow guard to a non-ancestor container. After the fix, re-verify: at scrollY≈1800 the wrapper's getBoundingClientRect().top should be ~64px (pinned below the top navbar).",
+    "Note: same principle applies to any other ancestor. Verified ancestors: MAIN(visible), .App(hidden auto <-- problem), outer wrapper divs(visible/static)."
+  ],
+  "critical_code_review_comments": [
+    "Tailwind 'overflow-x-hidden' is a common footgun for position:sticky. Prefer 'overflow-x-clip' when horizontal overflow guard is needed without breaking sticky descendants.",
+    "IntersectionObserver active-detection works well (verified: at scrollY=2500 the correct 'grill' button is highlighted rgb(177,153,99))."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "75% (jumps + highlight + regression pass; sticky pin fails)"},
+  "seed_data_creation": "None",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Only the sticky-pinning behavior needs retest after main agent changes the .App wrapper overflow. Measure: (a) at scrollY=0 wrapper.top≈542, (b) after window.__lenis.scrollTo(1800) + 2.5s settle, wrapper.getBoundingClientRect().top must be ~64px. Jump tests (grill, getraenke, vorspeisen) and active highlight already pass. Category-bar horizontal scroll (scrollWidth=1282, clientWidth=1170), 7 buttons, images(25), back-home-btn, no console errors, no horizontal overflow all pass.",
+  "rca of the issue": "position:sticky is contained by the nearest scrolling ancestor. Tailwind's 'overflow-x-hidden' sets only overflow-x:hidden; per CSS spec when one axis is 'hidden' and the other is 'visible', the visible axis is coerced to 'auto', so computed style becomes 'overflow: hidden auto'. This makes .App a scroll container. Because .App is not actually scrolling (document/window scrolls instead), the sticky child appears static. Fix: use 'overflow-x-clip' (Tailwind 3.1+) which uses CSS 'overflow: clip' and does NOT coerce overflow-y or create a scroll container."
+}

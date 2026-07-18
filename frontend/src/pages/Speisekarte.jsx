@@ -100,8 +100,8 @@ export default function Speisekarte() {
   }, []);
 
   return (
-    <main className="relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
+    <main className="relative">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <OrientPattern opacity={0.04} />
       </div>
 
