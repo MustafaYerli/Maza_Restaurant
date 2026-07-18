@@ -1,9 +1,14 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { BadgeCheck, ShieldCheck, Sprout } from "lucide-react";
 import { Reveal, GoldRule } from "./Reveal";
 import { IMAGES } from "../data/content";
 
-const TAGS = ["Herkunft", "Handschrift", "Jahreszeit", "Gastlichkeit"];
+const BADGES = [
+  { icon: BadgeCheck, label: "100 % österreichisches Rind" },
+  { icon: ShieldCheck, label: "Halal" },
+  { icon: Sprout, label: "Frische Zutaten" },
+];
 
 const About = () => {
   const ref = useRef(null);
@@ -47,13 +52,17 @@ const About = () => {
             </p>
           </Reveal>
           <Reveal delay={0.24}>
-            <div className="flex flex-wrap gap-x-8 gap-y-3 mt-10">
-              {TAGS.map((t) => (
+            <div className="flex flex-wrap gap-3 mt-10" data-testid="trust-badges">
+              {BADGES.map(({ icon: Icon, label }) => (
                 <span
-                  key={t}
-                  className="maza-body text-[#B19963] text-sm tracking-[0.2em] uppercase"
+                  key={label}
+                  data-testid={`trust-badge-${label}`}
+                  className="inline-flex items-center gap-2.5 border border-[#B19963]/40 bg-[#B19963]/[0.06] px-4 py-2.5 rounded-full"
                 >
-                  {t}
+                  <Icon className="text-[#B19963] shrink-0" strokeWidth={1.4} size={18} />
+                  <span className="maza-body text-[#F3EFE6]/85 text-xs md:text-sm tracking-[0.12em] uppercase">
+                    {label}
+                  </span>
                 </span>
               ))}
             </div>
