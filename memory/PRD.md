@@ -24,9 +24,15 @@ Editorial-Layouts. Deutschsprachig. Statisches Frontend, keine erfundenen Fakten
 - A11y: Tastaturnavigation Lightbox, reduced-motion (MotionConfig + CSS), Kontraste, semantisches HTML.
 - Inhalte: `src/data/content.js` (Gerichte, Menü, Galerie, Kontakt) — alle Preise/Adressen als PLATZHALTER markiert.
 
-## Verified (Testing Agent iteration_1 — 100% frontend)
-Hero voll sichtbar; Scroll-Reveals; Nav Smooth-Scroll; Mobile-Menü; Menü-Tabs; Galerie-Lightbox;
-Formular-Validierung (DE-Fehlermeldungen) + erfolgreiche LazyForms-Übermittlung; kein Overflow; keine Console-Errors.
+## Verified (Testing Agent — 100% frontend)
+- iter1: Hero, Scroll-Reveals, Nav, Mobile-Menü, Galerie-Lightbox, Formular (DE-Validierung + LazyForms).
+- iter2-4: /speisekarte Unterseite, sticky horizontal Kategorie-Leiste (overflow-x-clip Fix), Anker-Jumps + Gold-Highlight, Menü-Bilder (Vorschau + Unterseite), Router-Navigation. Kein Overflow, keine Console-Errors.
+
+## Iteration 2 (2026-06) — Menü-Erweiterung
+- Router (react-router-dom): '/' Home, '/speisekarte' vollständige Karte. Shared Header/Footer, Lenis global (window.__lenis).
+- Jede Menü-Position mit einheitlichem Mockup-Bild links (MENU_IMAGE); Startseiten-Vorschau + Unterseite.
+- Unterseite: sticky, horizontal scrollbare/ziehbare Kategorie-Leiste mit Anker-Links + aktivem Gold-Highlight (IntersectionObserver). 7 Kategorien (inkl. Töpfe & Eintöpfe).
+- Nav „Menü" + Button „Gesamtes Menü ansehen" → /speisekarte.
 
 ## Backlog / Next
 - P1: Header optional komplett transparent am Seitenanfang (aktuell dezent dunkel) — kosmetisch.
