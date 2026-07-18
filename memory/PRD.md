@@ -34,9 +34,15 @@ Editorial-Layouts. Deutschsprachig. Statisches Frontend, keine erfundenen Fakten
 - Unterseite: sticky, horizontal scrollbare/ziehbare Kategorie-Leiste mit Anker-Links + aktivem Gold-Highlight (IntersectionObserver). 7 Kategorien (inkl. Töpfe & Eintöpfe).
 - Nav „Menü" + Button „Gesamtes Menü ansehen" → /speisekarte.
 
-## Iteration 3 (2026-07) — Logo & Deploy-Fix
+## Iteration 3 (2026-07) — Logo, Deploy-Fix, Inhalte & Feinschliff
 - Render npm ERESOLVE (date-fns 4 vs react-day-picker) via `frontend/.npmrc` (legacy-peer-deps=true) behoben.
-- Offizielles Marken-Logo (Emblem + Schriftzug, transparent) `public/maza-logo.webp` in Navbar & Footer eingebunden; SVG-Emblem-Komponente durch `<img>` ersetzt (MazaLogo.jsx).
+- Offizielles Marken-Logo eingebunden: horizontal `public/maza-logo-h.webp` (Navbar), gestapelt `public/maza-logo.webp` (Footer); MazaLogo.jsx als `<img>`.
+- Favicon aus dem Emblem generiert (`favicon.ico`, `favicon-32/192.png`, `apple-touch-icon.png`) + Links in index.html.
+- Echte Adresse: Gunoldstraße 1 / Heiligenstädterstraße 78, 1190 Wien (content.js, Kontakt, Footer, Schema.org).
+- Footer/Kontakt: Instagram-Icon → https://www.instagram.com/maza.vienna/ ; Facebook entfernt.
+- Google-Maps-iframe (kein API-Key) im Kontakt-Bereich statt Platzhalter.
+- Wording „Premium"/generische Begriffe durch erlebnisorientierte Formulierungen ersetzt (Titel/OG/Twitter/Schema, Hero-Untertitel, Signature-Heading).
+- Bugfix: Descender-Clipping im Hero-Titel („g" in Afghanische) via `pb-[0.18em] -mb-[0.18em]` am MaskedLines-Wrapper. Verifiziert Testing-Agent iter5 (100%).
 
 ## Backlog / Next
 - P1: Header optional komplett transparent am Seitenanfang (aktuell dezent dunkel) — kosmetisch.
