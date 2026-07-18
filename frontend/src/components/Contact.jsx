@@ -1,6 +1,7 @@
 import React from "react";
 import { MapPin, Phone, Mail, Clock, Instagram, Facebook } from "lucide-react";
 import { Reveal, GoldRule } from "./Reveal";
+import { MazaMap } from "./MazaMap";
 import { CONTACT } from "../data/content";
 
 const SOCIAL_ICONS = { Instagram, Facebook };
@@ -107,18 +108,10 @@ const Contact = () => {
 
         <Reveal delay={0.1}>
           <div
-            data-testid="google-map"
+            data-testid="map-container"
             className="relative aspect-[4/5] lg:aspect-square border border-[#B19963]/25 bg-[#08231D] overflow-hidden"
           >
-            <iframe
-              title="MAZA Vienna auf Google Maps"
-              src="https://www.google.com/maps?q=Gunoldstra%C3%9Fe%201%2C%201190%20Wien%20Heiligenst%C3%A4dterstra%C3%9Fe%2078&z=16&output=embed"
-              className="absolute inset-0 h-full w-full"
-              style={{ border: 0, filter: "grayscale(0.3) contrast(1.05)" }}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            />
+            <MazaMap />
           </div>
         </Reveal>
       </div>
