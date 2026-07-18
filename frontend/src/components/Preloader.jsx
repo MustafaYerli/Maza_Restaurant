@@ -7,14 +7,26 @@ const LETTERS = ["M", "A", "Z", "A"];
 // Edler Preloader: Wortmarke baut sich auf, goldene Linie zieht ein,
 // anschließend gleitet der Vorhang elegant nach oben.
 const Preloader = () => {
-  const [done, setDone] = useState(false);
+  const [done, setDone] = useState(() => {
+    try {
+      return sessionStorage.getItem("maza_intro") === "1";
+    } catch {
+      return false;
+    }
+  });
 
   useEffect(() => {
+    if (done) return;
     document.body.style.overflow = "hidden";
     window.__lenis?.stop?.();
-    const t = setTimeout(() => setDone(true), 2100);
+    const t = setTimeout(() => {
+      setDone(true);
+      try {
+        sessionStorage.setItem("maza_intro", "1");
+      } catch {}
+    }, 2100);
     return () => clearTimeout(t);
-  }, []);
+  }, [done]);
 
   const release = () => {
     document.body.style.overflow = "";

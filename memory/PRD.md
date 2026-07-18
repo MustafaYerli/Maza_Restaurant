@@ -44,8 +44,16 @@ Editorial-Layouts. Deutschsprachig. Statisches Frontend, keine erfundenen Fakten
 - Wording „Premium"/generische Begriffe durch erlebnisorientierte Formulierungen ersetzt (Titel/OG/Twitter/Schema, Hero-Untertitel, Signature-Heading).
 - Bugfix: Descender-Clipping im Hero-Titel („g" in Afghanische) via `pb-[0.18em] -mb-[0.18em]` am MaskedLines-Wrapper. Verifiziert Testing-Agent iter5 (100%).
 
+## Iteration 4 (2026-06) — UX-/Eleganz-Feinschliff (Testing-Agent iter6: 100%)
+- Preloader (`components/Preloader.jsx`): MAZA-Wortmarke (Buchstaben-Reveal) + goldene Linie, gleitet nach oben weg; sperrt Scroll (Lenis stop) ~2,1s, dann frei. Einmal pro Sitzung via sessionStorage `maza_intro`.
+- Aktiver Nav-Zustand (`hooks/useScrollSpy.js` + `Header.jsx`): Scroll-Spy über SPY_IDS (home, ueber, galerie, reservierung, kontakt) → aktiver Link gold + dauerhafte Unterstreichung (`data-active`). „Menü" (Route) bewusst ausgenommen.
+- Elegante Hover-States (`index.css`): `.maza-fill` (Gold füllt von links, Outline-Buttons: header-reserve, hero-menu, full-menu, contact-call, res-reset), `.maza-lift` (dezentes Anheben + Schein, Solid-Buttons: hero-reserve, contact-route, reservation-submit).
+- Galerie-Lightbox (`Gallery.jsx`): stärkerer Blur (backdrop-blur-xl), Bildunterschrift + Zähler „NN / 08", weichere Übergänge; Pfeile + Escape + Close.
+- Reservierungsformular (`Reservation.jsx`): Felder mit `.maza-field` Fokus-Schein; Erfolgsanimation neu gestaffelt (Spring-Check-Icon + einlaufende Texte).
+- „Nach oben"-Button (`components/BackToTop.jsx`): erscheint > 700px, scrollt via Lenis nach oben.
+
 ## Backlog / Next
-- P1: Header optional komplett transparent am Seitenanfang (aktuell dezent dunkel) — kosmetisch.
 - P1: Echte Restaurant-Fotos, echte Adresse/Öffnungszeiten/Preise ersetzen die Platzhalter.
+- P1: Header optional komplett transparent am Seitenanfang — kosmetisch.
 - P2: Echte Impressum-/Datenschutz-/Cookie-Seiten & DSGVO-konformes Maps-Consent-Loading.
-- P2: Mehrsprachigkeit (EN), separate vollständige Menü-Seite.
+- P2: Mehrsprachigkeit (EN).
