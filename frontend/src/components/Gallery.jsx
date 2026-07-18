@@ -85,7 +85,7 @@ const Gallery = () => {
         {open && (
           <motion.div
             data-testid="lightbox"
-            className="fixed inset-0 z-[70] bg-[#050f0c]/95 backdrop-blur-sm flex items-center justify-center p-4"
+            className="fixed inset-0 z-[70] bg-[#050f0c]/90 backdrop-blur-xl flex items-center justify-center p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -107,16 +107,32 @@ const Gallery = () => {
             >
               <ChevronLeft strokeWidth={1} size={44} />
             </button>
-            <motion.img
-              key={index}
-              src={GALLERY[index].src}
-              alt={GALLERY[index].alt}
-              className="max-h-[85vh] max-w-[90vw] object-contain border border-[#B19963]/20"
-              initial={{ scale: 0.94, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.4 }}
-              onClick={(e) => e.stopPropagation()}
-            />
+            <div className="flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
+              <motion.img
+                key={index}
+                src={GALLERY[index].src}
+                alt={GALLERY[index].alt}
+                className="max-h-[78vh] max-w-[90vw] object-contain border border-[#B19963]/20 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]"
+                initial={{ scale: 0.94, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              />
+              <motion.div
+                key={`cap-${index}`}
+                className="mt-5 flex items-center gap-4"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                <span data-testid="lightbox-caption" className="maza-body text-[#F3EFE6]/80 text-xs tracking-[0.25em] uppercase">
+                  {GALLERY[index].alt}
+                </span>
+                <span className="h-px w-8 bg-[#B19963]/50" />
+                <span data-testid="lightbox-counter" className="maza-heading text-[#B19963] text-sm">
+                  {String(index + 1).padStart(2, "0")} / {String(GALLERY.length).padStart(2, "0")}
+                </span>
+              </motion.div>
+            </div>
             <button
               data-testid="lightbox-next"
               className="absolute right-4 md:right-10 text-[#F3EFE6] hover:text-[#B19963] transition-colors z-10"

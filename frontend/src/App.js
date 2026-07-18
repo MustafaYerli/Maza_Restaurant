@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "@/App.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Preloader from "@/components/Preloader";
+import BackToTop from "@/components/BackToTop";
 import Home from "@/pages/Home";
 import Speisekarte from "@/pages/Speisekarte";
 
@@ -35,6 +37,7 @@ function App() {
   return (
     <div className="App bg-[#071E19] text-[#F3EFE6] antialiased overflow-x-clip">
       <div className="grain-overlay" aria-hidden="true" />
+      <Preloader />
       <BrowserRouter>
         <MotionConfig reducedMotion="user">
           <Header />
@@ -43,6 +46,7 @@ function App() {
             <Route path="/speisekarte" element={<Speisekarte />} />
           </Routes>
           <Footer />
+          <BackToTop />
         </MotionConfig>
       </BrowserRouter>
     </div>

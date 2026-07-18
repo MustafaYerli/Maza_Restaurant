@@ -83,6 +83,52 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 
+/* Eleganter Outline-Button: goldene Fläche läuft von links ein */
+.maza-fill {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  transition: color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.maza-fill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--maza-gold);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+.maza-fill:hover::before {
+  transform: scaleX(1);
+}
+
+/* Solide Gold-Buttons: dezentes Anheben mit weichem Schein */
+.maza-lift {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.4s ease;
+}
+.maza-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px -12px rgba(177, 153, 99, 0.6);
+}
+
+/* Formularfelder: sanfter goldener Fokus-Schein */
+.maza-field {
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+.maza-field:focus {
+  box-shadow: 0 8px 20px -14px rgba(177, 153, 99, 0.9);
+}
+
+/* Zurück-nach-oben-Knopf */
+.maza-totop {
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.35s ease, color 0.35s ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

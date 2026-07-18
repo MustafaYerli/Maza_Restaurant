@@ -82,7 +82,7 @@ const MenuPreview = () => {
             <button
               data-testid="full-menu-btn"
               onClick={() => go("/speisekarte")}
-              className="maza-body text-xs tracking-[0.22em] uppercase px-9 py-4 border border-[#B19963] text-[#B19963] hover:bg-[#B19963] hover:text-[#071E19] transition-colors duration-400"
+              className="maza-fill maza-body text-xs tracking-[0.22em] uppercase px-9 py-4 border border-[#B19963] text-[#B19963] hover:text-[#071E19]"
             >
               Gesamtes Menü ansehen
             </button>

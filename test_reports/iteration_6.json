@@ -1,0 +1,30 @@
+{
+  "summary": "Frontend-only UX polish verification for MAZA Vienna. All 6 requested behaviors verified working end-to-end: preloader lifecycle, scroll-spy active nav, hover class attachment, gallery lightbox (open/prev/next/caption/counter/Escape/close), back-to-top visibility+scroll, and reservation inline German validation. No functional regressions found.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Preloader total lifetime is ~3.1s (2100ms delay + 1000ms exit slide). Feels slightly on the long side for repeat visitors; consider sessionStorage gate to only run once per session.",
+    "Header nav active-state at very top shows 'Home' active but immediately after any scroll shows 'Über MAZA'. The 'Menü' link is not part of SPY_IDS (home, ueber, galerie, reservierung, kontakt) so it is never highlighted - intentional but worth documenting.",
+    "Reservation testids use 'res-<field>' (e.g., res-firstName) prefix while the submit button uses 'reservation-submit-btn' and form uses 'reservation-form' - inconsistent naming; consider unifying to a single prefix for future test stability."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped per request)", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Static frontend-only site. Preloader body-overflow lock releases at ~3.1s (2100ms + 1000ms exit) — wait >=3.5s before scroll-dependent assertions on fresh load. Reservation field testids are 'res-firstName', 'res-lastName', 'res-email', 'res-phone', 'res-date', 'res-time', 'res-guests', 'res-message'. LazyForms endpoint is real — do NOT submit valid form. Scroll-spy nav items expose data-active='true|false'; 'Menü' link is intentionally excluded from spy IDs.",
+  "verified_behaviors": {
+    "preloader": "visible at load; DOM-removed by ~3.1s; body.style.overflow reset to '' after exit",
+    "scroll_spy": "Home active at y=0; Über MAZA active near ueber; Kontakt active after nav click to #kontakt",
+    "hover_classes": "header-reserve-btn, hero-menu-btn, full-menu-btn, contact-call-btn have maza-fill; hero-reserve-btn, contact-route-btn, reservation-submit-btn have maza-lift",
+    "lightbox": "Opens on gallery-item-0 click, caption='Afghanisches Festmahl', counter '01 / 08' -> '02 / 08' on next, back to '01 / 08' on prev, closes on Escape",
+    "back_to_top": "Hidden at top; visible after scrollY>700; clicking returns to y=0 and hides",
+    "reservation_validation": "All 6 err- messages appear in German on empty submit; err-firstName clears after typing; fields accept typing"
+  }
+}

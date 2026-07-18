@@ -1,14 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { MazaLogo } from "./MazaLogo";
 import { useNav } from "../hooks/useNav";
+import { useScrollSpy } from "../hooks/useScrollSpy";
 import { NAV_LINKS } from "../data/content";
+
+const SPY_IDS = ["home", "ueber", "galerie", "reservierung", "kontakt"];
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const navGo = useNav();
+  const { pathname } = useLocation();
+  const activeSection = useScrollSpy(SPY_IDS);
+
+  const isActive = (href) => {
+    if (href.startsWith("/")) return pathname === href;
+    return pathname === "/" && `#${activeSection}` === href;
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -38,24 +49,34 @@ const Header = () => {
           </button>
 
           <nav className="hidden lg:flex items-center gap-9">
-            {NAV_LINKS.map((l) => (
-              <button
-                key={l.href}
-                data-testid={`nav-${l.href.replace("#", "")}`}
-                onClick={() => go(l.href)}
-                className="maza-body text-[0.82rem] tracking-[0.18em] uppercase text-[#F3EFE6]/80 hover:text-[#B19963] transition-colors duration-300 relative group"
-              >
-                {l.label}
-                <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-[#B19963] group-hover:w-full transition-[width] duration-300" />
-              </button>
-            ))}
+            {NAV_LINKS.map((l) => {
+              const active = isActive(l.href);
+              return (
+                <button
+                  key={l.href}
+                  data-testid={`nav-${l.href.replace(/[#/]/g, "")}`}
+                  data-active={active}
+                  onClick={() => go(l.href)}
+                  className={`maza-body text-[0.82rem] tracking-[0.18em] uppercase transition-colors duration-300 relative group ${
+                    active ? "text-[#B19963]" : "text-[#F3EFE6]/80 hover:text-[#B19963]"
+                  }`}
+                >
+                  {l.label}
+                  <span
+                    className={`absolute -bottom-1.5 left-0 h-px bg-[#B19963] transition-[width] duration-300 ${
+                      active ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
+                  />
+                </button>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-4">
             <button
               data-testid="header-reserve-btn"
               onClick={() => go("#reservierung")}
-              className="hidden sm:inline-flex maza-body text-[0.72rem] tracking-[0.22em] uppercase px-6 py-3 border border-[#B19963] text-[#B19963] hover:bg-[#B19963] hover:text-[#071E19] transition-colors duration-400"
+              className="maza-fill hidden sm:inline-flex maza-body text-[0.72rem] tracking-[0.22em] uppercase px-6 py-3 border border-[#B19963] text-[#B19963] hover:text-[#071E19]"
             >
               Tisch reservieren
             </button>

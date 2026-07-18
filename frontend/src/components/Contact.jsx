@@ -70,14 +70,14 @@ const Contact = () => {
                 href="https://maps.google.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="maza-body text-xs tracking-[0.22em] uppercase px-8 py-4 bg-[#B19963] text-[#071E19] hover:bg-[#c5ac74] transition-colors duration-400"
+                className="maza-lift maza-body text-xs tracking-[0.22em] uppercase px-8 py-4 bg-[#B19963] text-[#071E19] hover:bg-[#c5ac74]"
               >
                 Route planen
               </a>
               <a
                 data-testid="contact-call-btn"
                 href={`tel:${CONTACT.phone.replace(/\s/g, "")}`}
-                className="maza-body text-xs tracking-[0.22em] uppercase px-8 py-4 border border-[#B19963] text-[#B19963] hover:bg-[#B19963] hover:text-[#071E19] transition-colors duration-400"
+                className="maza-fill maza-body text-xs tracking-[0.22em] uppercase px-8 py-4 border border-[#B19963] text-[#B19963] hover:text-[#071E19]"
               >
                 Jetzt anrufen
               </a>

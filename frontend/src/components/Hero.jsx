@@ -80,14 +80,14 @@ const Hero = () => {
           <button
             data-testid="hero-reserve-btn"
             onClick={() => scrollTo("#reservierung")}
-            className="maza-body text-xs tracking-[0.22em] uppercase px-9 py-4 bg-[#B19963] text-[#071E19] hover:bg-[#c5ac74] transition-colors duration-400"
+            className="maza-lift maza-body text-xs tracking-[0.22em] uppercase px-9 py-4 bg-[#B19963] text-[#071E19] hover:bg-[#c5ac74]"
           >
             Tisch reservieren
           </button>
           <button
             data-testid="hero-menu-btn"
             onClick={() => scrollTo("#menue")}
-            className="maza-body text-xs tracking-[0.22em] uppercase px-9 py-4 border border-[#F3EFE6]/40 text-[#F3EFE6] hover:border-[#B19963] hover:text-[#B19963] transition-colors duration-400"
+            className="maza-fill maza-body text-xs tracking-[0.22em] uppercase px-9 py-4 border border-[#B19963]/60 text-[#F3EFE6] hover:text-[#071E19]"
           >
             Menü entdecken
           </button>

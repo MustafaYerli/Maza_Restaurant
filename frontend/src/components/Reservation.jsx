@@ -26,7 +26,7 @@ const Field = ({ label, name, type = "text", value, onChange, error, required, .
       type={type}
       value={value}
       onChange={onChange}
-      className={`bg-transparent border-b py-3 text-[#F3EFE6] maza-body font-light outline-none transition-colors focus:border-[#B19963] placeholder:text-[#F3EFE6]/25 ${
+      className={`maza-field bg-transparent border-b py-3 text-[#F3EFE6] maza-body font-light outline-none focus:border-[#B19963] placeholder:text-[#F3EFE6]/25 ${
         error ? "border-red-400/70" : "border-[#B19963]/30"
       }`}
       {...rest}
@@ -122,27 +122,58 @@ const Reservation = () => {
             <motion.div
               key="success"
               data-testid="res-success"
-              className="text-center border border-[#B19963]/30 py-16 px-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              className="text-center border border-[#B19963]/30 bg-[#B19963]/[0.04] py-16 px-6"
+              initial="hidden"
+              animate="show"
+              variants={{
+                hidden: {},
+                show: { transition: { staggerChildren: 0.14, delayChildren: 0.1 } },
+              }}
             >
-              <span className="inline-flex items-center justify-center w-16 h-16 rounded-full border border-[#B19963] text-[#B19963] mb-6">
+              <motion.span
+                className="inline-flex items-center justify-center w-16 h-16 rounded-full border border-[#B19963] text-[#B19963] mb-6"
+                variants={{
+                  hidden: { scale: 0, rotate: -30, opacity: 0 },
+                  show: {
+                    scale: 1,
+                    rotate: 0,
+                    opacity: 1,
+                    transition: { type: "spring", stiffness: 180, damping: 14 },
+                  },
+                }}
+              >
                 <Check strokeWidth={1.2} size={30} />
-              </span>
-              <h3 className="maza-heading text-2xl md:text-3xl text-[#F3EFE6] font-light mb-4">
+              </motion.span>
+              <motion.h3
+                className="maza-heading text-2xl md:text-3xl text-[#F3EFE6] font-light mb-4"
+                variants={{
+                  hidden: { opacity: 0, y: 16 },
+                  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+                }}
+              >
                 Vielen Dank für Ihre Anfrage
-              </h3>
-              <p className="maza-body text-[#F3EFE6]/70 font-light max-w-md mx-auto">
+              </motion.h3>
+              <motion.p
+                className="maza-body text-[#F3EFE6]/70 font-light max-w-md mx-auto"
+                variants={{
+                  hidden: { opacity: 0, y: 16 },
+                  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+                }}
+              >
                 Wir haben Ihre Reservierungsanfrage erhalten und melden uns in Kürze.
                 Ihre Reservierung ist erst nach unserer Bestätigung verbindlich.
-              </p>
-              <button
+              </motion.p>
+              <motion.button
                 data-testid="res-reset-btn"
                 onClick={() => setStatus("idle")}
-                className="maza-body text-xs tracking-[0.22em] uppercase mt-8 px-8 py-3 border border-[#B19963]/50 text-[#B19963] hover:bg-[#B19963] hover:text-[#071E19] transition-colors"
+                className="maza-fill maza-body text-xs tracking-[0.22em] uppercase mt-8 px-8 py-3 border border-[#B19963]/50 text-[#B19963] hover:text-[#071E19]"
+                variants={{
+                  hidden: { opacity: 0, y: 16 },
+                  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
+                }}
               >
                 Neue Anfrage
-              </button>
+              </motion.button>
             </motion.div>
           ) : (
             <motion.form
@@ -170,7 +201,7 @@ const Reservation = () => {
                   name="guests"
                   value={form.guests}
                   onChange={onChange}
-                  className="bg-transparent border-b border-[#B19963]/30 py-3 text-[#F3EFE6] maza-body font-light outline-none focus:border-[#B19963] transition-colors [&>option]:bg-[#08231D]"
+                  className="maza-field bg-transparent border-b border-[#B19963]/30 py-3 text-[#F3EFE6] maza-body font-light outline-none focus:border-[#B19963] [&>option]:bg-[#08231D]"
                 >
                   {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
                     <option key={n} value={n}>{n} {n === 1 ? "Person" : "Personen"}</option>
@@ -189,7 +220,7 @@ const Reservation = () => {
                   rows={3}
                   value={form.message}
                   onChange={onChange}
-                  className="bg-transparent border-b border-[#B19963]/30 py-3 text-[#F3EFE6] maza-body font-light outline-none focus:border-[#B19963] transition-colors resize-none"
+                  className="maza-field bg-transparent border-b border-[#B19963]/30 py-3 text-[#F3EFE6] maza-body font-light outline-none focus:border-[#B19963] resize-none"
                 />
               </div>
 
@@ -205,7 +236,7 @@ const Reservation = () => {
                   data-testid="reservation-submit-btn"
                   type="submit"
                   disabled={status === "loading"}
-                  className="inline-flex items-center justify-center gap-2 maza-body text-xs tracking-[0.22em] uppercase px-12 py-4 bg-[#B19963] text-[#071E19] hover:bg-[#c5ac74] transition-colors duration-400 disabled:opacity-60 min-w-[240px]"
+                  className="maza-lift inline-flex items-center justify-center gap-2 maza-body text-xs tracking-[0.22em] uppercase px-12 py-4 bg-[#B19963] text-[#071E19] hover:bg-[#c5ac74] disabled:opacity-60 disabled:hover:translate-y-0 min-w-[240px]"
                 >
                   {status === "loading" ? (
                     <><Loader2 className="animate-spin" size={16} /> Wird gesendet…</>
