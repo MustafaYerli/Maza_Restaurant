@@ -1,0 +1,119 @@
+<analysis>**original_problem_statement**: 
+The user requested a premium, fully responsive, and award-worthy website for the Afghan restaurant MAZA Vienna. The design must strictly adhere to the brand's dark green and gold aesthetic, conveying luxury, authenticity, and oriental elegance. 
+**PRODUCT REQUIREMENTS:**
+- Single-page architecture with a new subpage for the full menu ().
+- Specific sections: Header, Hero, About, Signature Dishes, Philosophy, Menu Preview, Gallery, Reservation, Contact, Footer.
+- High-quality, smooth scrolling and scroll-reveal animations (using  and ).
+- Reservation system using LazyForms.
+- No backend required (Static site only).
+- Deployment blueprint for Render (free static site).
+
+**User's preferred language**: German (The next agent MUST respond to the user in German only).
+
+**what currently exists?**
+A highly polished, responsive, and animated static React frontend website tailored for MAZA Vienna. It uses Tailwind CSS, Framer Motion for reveals, and Lenis for smooth momentum scrolling. It includes LazyForms for reservations, a Leaflet-based custom-branded map, and a dedicated routing setup for the homepage and . A  configuration is present, and an  file handles dependency resolution for Render deployments.
+
+**Last working item**: 
+    - Last item agent was working: Replacing generic keywords in the Über uns (About) section with styled Trust Badges (100 % österreichisches Rind, Halal, Frische Zutaten) using Lucide icons.
+    - Status: USER VERIFICATION PENDING
+    - Agent Testing Done: Y
+    - Which testing method agent to use?: NA (Already verified via screenshot tool)
+    - User Testing Done: N
+
+**All Pending/In progress Issue list**: 
+*No pending issues. All requested features and bug fixes have been successfully implemented and tested.*
+
+**In progress Task List**: 
+*No tasks are currently in progress.*
+
+**Upcoming and Future Tasks**
+Upcoming Tasks:
+- Task 1: Replace placeholder/mockup images with actual high-quality food photography from the client (P1).
+- Task 2: Fill in actual pricing, ingredients, and allergen information for the menu (P1).
+- Task 3: Update opening hours and phone number placeholders with actual client data (P1).
+
+Future Tasks:
+- Task 4: Implement a German/English language toggle for international guests (P2).
+- Task 5: Assist with custom domain linking on Render once deployed (P2).
+
+**Completed work in this session**
+- Render Build Fix: Created  with  to solve  peer dependency conflicts during Render build (DONE).
+- Official Logo Integration: Embedded transparent client logos in Navbar and Footer (DONE).
+- Contact & Socials: Updated physical address, added Instagram link, removed Facebook (DONE).
+- Favicon Setup: Cropped logo to create and link custom favicons (ico, png, apple-touch-icon) (DONE).
+- Map Integration: Replaced Google Maps with an interactive, brand-colored (dark green/gold) Leaflet map with a permanently visible custom pin tooltip (DONE).
+- Elegant Copywriting: Replaced cheap-sounding words (like Premium) with elegant, poetic language in Hero, SEO titles, Marquee, and About section (DONE).
+- CSS Bug Fix: Fixed a clipping issue that cut off the lowercase g in the Hero section's  animation (DONE).
+- Trust Badges: Added custom UI badges for Halal, Austrian Beef, and Fresh Ingredients in the About section (DONE).
+
+**Earlier issues found/mentioned but not fixed**
+*None.*
+
+**Known issue recurrence from previous fork**
+- Issue recurrence in previous fork: N/A 
+- Recurrence count: 0
+- Status: NOT STARTED
+
+**Code Architecture**
+
+
+**Key Technical Concepts**
+- **Frontend Only**: React, Tailwind CSS, Framer Motion, React Router DOM, Lenis, Leaflet ().
+- **Hosting Strategy**: Completely static site (SPA) hosted on Render with a rewrite rule ( to ). No Node backend or DB required at runtime.
+- **Dependency Management**: Uses  () to bypass strict peer-dependency checks on Render.
+
+**key DB schema**
+- N/A (Static frontend only).
+
+**changes in tech stack**
+- Added  and  to dependencies for the custom branded map.
+
+**All files of reference** 
+1.  - Created to fix Render deployment dependency issues.
+2.  - Created for the custom Leaflet map.
+3.  - Updated for Trust Badges and poetic copywriting.
+4.  - Updated to fix descender ('g') clipping.
+5.  - Updated to implement new map and address.
+6.  - Central source of truth for text, addresses, and social links.
+
+**Areas that need refactoring**: 
+- None. 
+
+**key api endpoints**
+- LazyForms Endpoint:  (Hardcoded in the Reservation form).
+
+**Critical Info for New Agent**
+- **Backend Ignored**: This is explicitly a static site only. Do not attempt to start or troubleshoot the FastAPI backend or MongoDB. 
+- **Wording & Tone**: The user strictly requested elegant, poetic, and exquisite copywriting. Do not use generic marketing buzzwords like Premium, Top Quality, or Best.
+- **Maps Requirement**: The Map must remain Leaflet-based to maintain the custom dark green/gold styling. Do not switch back to Google Maps.
+- **Language**: You MUST communicate with the user entirely in **German**. 
+
+**documents and test reports created in this job**
+- 
+
+**Last 10 User Messages and any pending HUMAN messages**
+1. die karte ist zu dunkel - (COMPLETED)
+2. auf der karte soll der pin immer die details zeigen - (COMPLETED)
+3. der bar unter dem hero steht gastfreundschaft, eleganz, qualität - da soll was anderes stehen... - (COMPLETED)
+4. im über uns schreibe eher poetischer, über die geschichte und tradition und die wichtigkeit der frische zutaten... - (COMPLETED)
+5. statt diese schlagwörter in über uns, mache trust badget 100% österreichische rind, Helal, Frische Zutaten, - (COMPLETED)
+
+**Project Health Check:**
+- Broken: None
+- Mocked: Menu images, food pricing, phone numbers, and opening hours are currently placeholders pending client data.
+
+**3rd Party Integrations**
+- Leaflet (Maps) — Open source tiles (CARTO Dark Matter), requires no API Key.
+- LazyForms (Reservations) — uses static user-provided form action URL.
+
+**Testing status**
+- Testing agent used after significant changes: YES (Verified Hero CSS clipping fix)
+- Troubleshoot agent used after agent stuck in loop: NO
+- Test files created: 
+- Known regressions: None.
+
+**Credentials to test flow:**
+- N/A
+
+**What agent forgot to execute**
+- Nothing. All tasks, map behaviors, and stylistic adjustments were accurately implemented.</analysis>
