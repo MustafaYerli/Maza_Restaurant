@@ -34,6 +34,10 @@ Editorial-Layouts. Deutschsprachig. Statisches Frontend, keine erfundenen Fakten
 - Unterseite: sticky, horizontal scrollbare/ziehbare Kategorie-Leiste mit Anker-Links + aktivem Gold-Highlight (IntersectionObserver). 7 Kategorien (inkl. Töpfe & Eintöpfe).
 - Nav „Menü" + Button „Gesamtes Menü ansehen" → /speisekarte.
 
+## Iteration 3 (2026-07) — Logo & Deploy-Fix
+- Render npm ERESOLVE (date-fns 4 vs react-day-picker) via `frontend/.npmrc` (legacy-peer-deps=true) behoben.
+- Offizielles Marken-Logo (Emblem + Schriftzug, transparent) `public/maza-logo.webp` in Navbar & Footer eingebunden; SVG-Emblem-Komponente durch `<img>` ersetzt (MazaLogo.jsx).
+
 ## Backlog / Next
 - P1: Header optional komplett transparent am Seitenanfang (aktuell dezent dunkel) — kosmetisch.
 - P1: Echte Restaurant-Fotos, echte Adresse/Öffnungszeiten/Preise ersetzen die Platzhalter.
