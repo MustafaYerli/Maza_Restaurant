@@ -24,10 +24,14 @@ export const IMAGES = {
     "https://static.prod-images.emergentagent.com/jobs/c49a0473-23fc-435e-8088-4761aa7306c1/images/a059c9647b6761cbba11b522da2c2835a5acf3c34255811741e5121e4835d8b1.png",
 };
 
+// Einheitliches Platzhalter-/Mockup-Bild für alle Menü-Positionen.
+export const MENU_IMAGE =
+  "https://static.prod-images.emergentagent.com/jobs/c49a0473-23fc-435e-8088-4761aa7306c1/images/2732b97cc4edfa425e0410c6e89665d92139b1266150564a968c9d8606c7b64a.png";
+
 export const NAV_LINKS = [
   { label: "Home", href: "#home" },
   { label: "Über MAZA", href: "#ueber" },
-  { label: "Menü", href: "#menue" },
+  { label: "Menü", href: "/speisekarte" },
   { label: "Galerie", href: "#galerie" },
   { label: "Reservierung", href: "#reservierung" },
   { label: "Kontakt", href: "#kontakt" },
@@ -73,65 +77,57 @@ export const SIGNATURE_DISHES = [
 ];
 
 export const PHILOSOPHY = [
-  {
-    no: "01",
-    icon: "Landmark",
-    title: "Tradition",
-    text: "Rezepte, die über Generationen weitergereicht wurden – bewahrt in jedem Handgriff unserer Küche.",
-  },
-  {
-    no: "02",
-    icon: "Flower2",
-    title: "Kultur",
-    text: "Jedes Gericht erzählt von der Vielfalt und Wärme der afghanischen Esskultur.",
-  },
-  {
-    no: "03",
-    icon: "Leaf",
-    title: "Qualität",
-    text: "Ausgewählte, frische Zutaten und sorgfältige Zubereitung als Grundlage jeder Speise.",
-  },
-  {
-    no: "04",
-    icon: "Lamp",
-    title: "Gastfreundschaft",
-    text: "Ein gedeckter Tisch ist eine Einladung – aufmerksam, herzlich und ohne Eile.",
-  },
-  {
-    no: "05",
-    icon: "TreePalm",
-    title: "Orient",
-    text: "Moderne Präsentation trifft auf die zeitlose Sinnlichkeit des Orients.",
-  },
+  { no: "01", icon: "Landmark", title: "Tradition", text: "Rezepte, die über Generationen weitergereicht wurden – bewahrt in jedem Handgriff unserer Küche." },
+  { no: "02", icon: "Flower2", title: "Kultur", text: "Jedes Gericht erzählt von der Vielfalt und Wärme der afghanischen Esskultur." },
+  { no: "03", icon: "Leaf", title: "Qualität", text: "Ausgewählte, frische Zutaten und sorgfältige Zubereitung als Grundlage jeder Speise." },
+  { no: "04", icon: "Lamp", title: "Gastfreundschaft", text: "Ein gedeckter Tisch ist eine Einladung – aufmerksam, herzlich und ohne Eile." },
+  { no: "05", icon: "TreePalm", title: "Orient", text: "Moderne Präsentation trifft auf die zeitlose Sinnlichkeit des Orients." },
 ];
 
-// Menü — alle Angaben sind Platzhalter und können frei angepasst werden.
+// Vollständiges Menü — jede Kategorie hat eine slug-id für Anker-Links.
+// Alle Angaben sind Platzhalter und können frei angepasst werden.
 export const MENU = [
   {
+    id: "vorspeisen",
     category: "Vorspeisen",
     items: [
       { name: "Bolani", desc: "Gefülltes Fladenbrot, Minzjoghurt", price: "€ 9" },
       { name: "Sambosa", desc: "Knusprige Teigtaschen, Kräuter", price: "€ 8" },
       { name: "Borani Banjan", desc: "Aubergine, Tomate, Joghurt", price: "€ 10" },
+      { name: "Kichererbsen-Salat", desc: "Frische Kräuter, Zitrone, Sumach", price: "€ 8" },
     ],
   },
   {
+    id: "toepfe",
+    category: "Töpfe & Eintöpfe",
+    items: [
+      { name: "Qorma-e-Sabzi", desc: "Spinat-Eintopf mit Lamm", price: "€ 19" },
+      { name: "Qorma-e-Lawand", desc: "Huhn, Joghurt, Kurkuma", price: "€ 18" },
+      { name: "Shorwa", desc: "Klare Lammsuppe, Kichererbsen", price: "€ 12" },
+    ],
+  },
+  {
+    id: "klassiker",
     category: "Afghanische Klassiker",
     items: [
       { name: "Qabeli Palau", desc: "Lamm, Basmati, Karotten, Rosinen", price: "€ 24" },
       { name: "Mantu", desc: "Teigtaschen, Knoblauchjoghurt", price: "€ 18" },
       { name: "Kabuli Chicken", desc: "Huhn, Safranreis, Gewürze", price: "€ 21" },
+      { name: "Aushak", desc: "Lauch-Teigtaschen, Joghurt, Minze", price: "€ 17" },
     ],
   },
   {
+    id: "grill",
     category: "Grillgerichte",
     items: [
       { name: "Lamm Kebab", desc: "Safranreis, Fladenbrot", price: "€ 26" },
       { name: "Chapli Kebab", desc: "Würziges Rindfleisch, Kräuter", price: "€ 22" },
+      { name: "Hähnchen-Spieß", desc: "Mariniert, gegrilltes Gemüse", price: "€ 20" },
       { name: "Gemischte Platte", desc: "Für zwei Personen", price: "€ 48" },
     ],
   },
   {
+    id: "vegetarisch",
     category: "Vegetarische Gerichte",
     items: [
       { name: "Sabzi Palau", desc: "Spinat, Kräuter, Basmati", price: "€ 16" },
@@ -140,6 +136,7 @@ export const MENU = [
     ],
   },
   {
+    id: "desserts",
     category: "Desserts",
     items: [
       { name: "Firni", desc: "Reispudding, Pistazie, Rosenwasser", price: "€ 8" },
@@ -148,11 +145,13 @@ export const MENU = [
     ],
   },
   {
+    id: "getraenke",
     category: "Getränke",
     items: [
       { name: "Grüner Kardamom-Tee", desc: "Traditionell serviert", price: "€ 4" },
       { name: "Doogh", desc: "Joghurtgetränk, Minze", price: "€ 5" },
       { name: "Granatapfelsaft", desc: "Frisch gepresst", price: "€ 6" },
+      { name: "Schwarzer Tee", desc: "Mit Kardamom & Zucker", price: "€ 4" },
     ],
   },
 ];

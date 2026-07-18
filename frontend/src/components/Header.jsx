@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { MazaLogo } from "./MazaLogo";
+import { useNav } from "../hooks/useNav";
 import { NAV_LINKS } from "../data/content";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const navGo = useNav();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -17,8 +19,7 @@ const Header = () => {
 
   const go = (href) => {
     setOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    navGo(href);
   };
 
   return (

@@ -1,0 +1,29 @@
+{
+  "summary": "Frontend-only testing of MAZA Vienna iteration 2 (menu images, /speisekarte subpage, sticky category bar, router). Most features work: menu-preview images render, full-menu-btn + nav 'Menü' navigate to /speisekarte, all 25 dish rows on subpage have images, category bar contains all 7 cat-link buttons, horizontal scroll works (scrollWidth 1282 > clientWidth 1170), active-highlight gold background (#B19963) applies on scroll (Getraenke, Klassiker verified), back-home-btn returns to '/', hero opacity 1, reservation/gallery still work, no console errors, no horizontal overflow on desktop or mobile. ONE CRITICAL BUG: the 'sticky' category bar is NOT actually sticky when the page scrolls, because an ancestor <main> has 'overflow: hidden' which invalidates position:sticky.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "Speisekarte CategoryBar", "issue": "Sticky bar does NOT stick during scroll. The wrapper has 'sticky top-[64px]' and computed position is 'sticky', but ancestor <main className=\"relative overflow-hidden\"> (Speisekarte.jsx line 103) creates an overflow context that breaks position:sticky. Measured: wrapperRectTop went from 542 -> -946 when scrollY went from 0 -> 1488, i.e. it scrolls away with the page instead of pinning at top:64px. Screenshot at scrollY=1797 (Klassiker section) shows no category bar visible near the top.", "selector": "[data-testid='menu-category-bar']", "priority": "HIGH"},
+      {"component": "Speisekarte category jump (long distance)", "issue": "Lenis-driven jumps between far-apart categories can overshoot/undershoot. E.g. clicking cat-link-grill after being at Klassiker left grill sectionTop at -1389 (above viewport) after 3.5s wait and its button was NOT highlighted (bg rgba(0,0,0,0)). Short-distance jumps (Vorspeisen->Getraenke, top->Klassiker) landed correctly with gold highlight. Likely related to same overflow-hidden ancestor interfering with Lenis' scroll container detection.", "selector": "[data-testid='cat-link-grill']", "priority": "MEDIUM"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "Fix sticky category bar: in /app/frontend/src/pages/Speisekarte.jsx line 103, change <main className=\"relative overflow-hidden\"> to <main className=\"relative overflow-x-hidden\"> (or remove overflow-hidden entirely and clip only the OrientPattern). Same fix likely resolves the Lenis overshoot on long category jumps.",
+    "After fix, re-verify: wrapperRectTop stays ~64px while scrolling; scrolling manually through sections cycles the gold highlight through cat-link-* buttons; clicking any category (including far ones like grill from top) lands with sectionTop ~130 and gold-highlighted button."
+  ],
+  "critical_code_review_comments": [
+    "Speisekarte.jsx: <main className='relative overflow-hidden'> kills the child position:sticky. Use overflow-x-hidden if horizontal clipping is needed.",
+    "Speisekarte.jsx CategoryBar: the data-testid 'menu-category-bar' is placed on the inner scroller div, but the sticky styling is on its grandparent. Tests that assert computed position on the testid element see 'static'. Consider putting testid on the sticky wrapper or expose both.",
+    "IntersectionObserver in Speisekarte.jsx uses rootMargin '-140px 0px -60% 0px' — with the current broken sticky the header no longer occupies 140px, so active detection band may not align with visual header. After sticky fix this should be re-checked."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "85%"},
+  "seed_data_creation": "None",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Iteration 2 test-covered: home menu preview images (OK), full-menu-btn nav (OK), nav 'Menü' -> /speisekarte (OK), 25/25 dish images on subpage (OK), category bar present with 7 buttons and horizontal overflow (OK), active gold highlight (OK for short jumps), back-home-btn (OK), regression on hero/reservation/gallery/no-console-errors/no-horizontal-overflow (OK). Only broken behavior: STICKINESS of category bar due to ancestor overflow-hidden. After main agent applies the one-line CSS fix, re-run just sticky + long-distance category jump tests.",
+  "rca of the issue": "position:sticky is relative to the nearest scrolling ancestor. `<main className='relative overflow-hidden'>` in /app/frontend/src/pages/Speisekarte.jsx creates a scroll container whose overflow is clipped and non-scrollable, effectively making sticky pin to the top of <main> instead of the viewport, and since <main> itself scrolls out of view, the sticky bar scrolls with it. Fix: remove overflow-hidden or restrict to overflow-x-hidden. Reproduction: open /speisekarte on 1440x900, scroll down 1500px, observe the category bar has scrolled off screen instead of pinning at 64px from top."
+}

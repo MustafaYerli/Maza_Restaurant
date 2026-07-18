@@ -67,6 +67,15 @@ body {
   }
 }
 
+/* Horizontale Scroll-Leiste ohne sichtbaren Scrollbalken */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 /* Kalender-/Uhr-Icon der Date/Time-Inputs golden einfärben */
 input[type="date"]::-webkit-calendar-picker-indicator,
 input[type="time"]::-webkit-calendar-picker-indicator {

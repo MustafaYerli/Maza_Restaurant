@@ -1,13 +1,13 @@
 import React from "react";
 import { MazaLogo } from "./MazaLogo";
 import { OrientPattern } from "./Ornament";
+import { useNav } from "../hooks/useNav";
 import { NAV_LINKS, CONTACT } from "../data/content";
 
 const LEGAL = ["Impressum", "Datenschutz", "Cookie-Einstellungen"];
 
 const Footer = () => {
-  const go = (href) =>
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+  const go = useNav();
 
   return (
     <footer data-testid="site-footer" className="relative bg-[#050f0c] overflow-hidden">

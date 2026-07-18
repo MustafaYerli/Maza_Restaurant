@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { Reveal } from "./Reveal";
 import { OrnamentDivider } from "./Ornament";
-import { MENU } from "../data/content";
+import { useNav } from "../hooks/useNav";
+import { MENU, MENU_IMAGE } from "../data/content";
 
 const MenuPreview = () => {
   const [active, setActive] = useState(0);
   const cat = MENU[active];
-
-  const scrollTo = (href) =>
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+  const go = useNav();
 
   return (
     <section id="menue" data-testid="menu-section" className="relative py-24 md:py-36 bg-[#08231D]">
@@ -46,11 +45,19 @@ const MenuPreview = () => {
           </div>
         </Reveal>
 
-        <div className="max-w-3xl mx-auto space-y-7" data-testid="menu-items">
+        <div className="max-w-3xl mx-auto space-y-6" data-testid="menu-items">
           {cat.items.map((item, i) => (
             <Reveal key={item.name} delay={i * 0.05}>
-              <div className="flex items-baseline gap-4">
-                <div className="flex-1">
+              <div className="group flex items-center gap-5 md:gap-6 border-b border-[#B19963]/12 pb-6">
+                <div className="relative shrink-0 w-16 h-16 md:w-20 md:h-20 overflow-hidden border border-[#B19963]/20">
+                  <img
+                    src={MENU_IMAGE}
+                    alt={item.name}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
                   <h3 className="maza-heading text-xl md:text-2xl text-[#F3EFE6] font-light">
                     {item.name}
                   </h3>
@@ -58,7 +65,6 @@ const MenuPreview = () => {
                     {item.desc}
                   </p>
                 </div>
-                <span className="flex-1 border-b border-dotted border-[#B19963]/30 translate-y-[-4px] hidden sm:block" />
                 <span className="maza-heading text-xl md:text-2xl text-[#B19963] shrink-0">
                   {item.price}
                 </span>
@@ -75,7 +81,7 @@ const MenuPreview = () => {
           <div className="text-center mt-8">
             <button
               data-testid="full-menu-btn"
-              onClick={() => scrollTo("#reservierung")}
+              onClick={() => go("/speisekarte")}
               className="maza-body text-xs tracking-[0.22em] uppercase px-9 py-4 border border-[#B19963] text-[#B19963] hover:bg-[#B19963] hover:text-[#071E19] transition-colors duration-400"
             >
               Gesamtes Menü ansehen
