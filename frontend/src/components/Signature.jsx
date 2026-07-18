@@ -11,12 +11,12 @@ const Signature = () => {
         <div className="text-center mb-16 md:mb-24">
           <Reveal>
             <p className="maza-body text-[#B19963] text-xs tracking-[0.35em] uppercase mb-5">
-              Ausgewählte Gerichte
+              Aus unserer Küche
             </p>
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="maza-heading text-4xl md:text-5xl lg:text-6xl font-light text-[#F3EFE6]">
-              Unsere Signature Dishes
+              Gerichte, die in Erinnerung bleiben
             </h2>
           </Reveal>
           <OrnamentDivider className="mt-8" />

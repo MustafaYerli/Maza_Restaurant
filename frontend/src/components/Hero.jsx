@@ -67,8 +67,8 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 1 }}
         >
-          Eine kulinarische Reise durch die Aromen Afghanistans – geprägt von
-          Gastfreundschaft, hochwertigen Zutaten und moderner Raffinesse.
+          Eine kulinarische Reise durch die Aromen Afghanistans – getragen von
+          herzlicher Gastfreundschaft, sorgsam gewählten Zutaten und stiller Eleganz.
         </motion.p>
 
         <motion.div
