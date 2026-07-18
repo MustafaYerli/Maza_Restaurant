@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { BadgeCheck, ShieldCheck, Sprout } from "lucide-react";
+import { BadgeCheck, Sprout } from "lucide-react";
 import { Reveal, GoldRule } from "./Reveal";
 import { IMAGES } from "../data/content";
 
 const BADGES = [
   { icon: BadgeCheck, label: "100 % österreichisches Rind" },
-  { icon: ShieldCheck, label: "Halal" },
+  { arabic: true, label: "Halal" },
   { icon: Sprout, label: "Frische Zutaten" },
 ];
 
@@ -53,13 +53,23 @@ const About = () => {
           </Reveal>
           <Reveal delay={0.24}>
             <div className="flex flex-wrap gap-3 mt-10" data-testid="trust-badges">
-              {BADGES.map(({ icon: Icon, label }) => (
+              {BADGES.map(({ icon: Icon, arabic, label }) => (
                 <span
                   key={label}
                   data-testid={`trust-badge-${label}`}
                   className="inline-flex items-center gap-2.5 border border-[#B19963]/40 bg-[#B19963]/[0.06] px-4 py-2.5 rounded-full"
                 >
-                  <Icon className="text-[#B19963] shrink-0" strokeWidth={1.4} size={18} />
+                  {arabic ? (
+                    <span
+                      className="text-[#B19963] leading-none shrink-0"
+                      style={{ fontSize: "1rem", fontFamily: "'Segoe UI', 'Noto Naskh Arabic', serif" }}
+                      aria-hidden="true"
+                    >
+                      حلال
+                    </span>
+                  ) : (
+                    <Icon className="text-[#B19963] shrink-0" strokeWidth={1.4} size={18} />
+                  )}
                   <span className="maza-body text-[#F3EFE6]/85 text-xs md:text-sm tracking-[0.12em] uppercase">
                     {label}
                   </span>
