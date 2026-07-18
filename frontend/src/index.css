@@ -176,3 +176,25 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .maza-map .maza-pin {
   filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.5));
 }
+.maza-map .leaflet-tooltip.maza-tooltip {
+  background: #08231d;
+  color: #f3efe6;
+  border: 1px solid rgba(177, 153, 99, 0.4);
+  border-radius: 2px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  padding: 10px 14px;
+  font-family: inherit;
+  white-space: nowrap;
+}
+.maza-map .leaflet-tooltip.maza-tooltip::before {
+  border-top-color: rgba(177, 153, 99, 0.4);
+}
+.maza-map .maza-tooltip .maza-popup {
+  line-height: 1.5;
+  font-size: 12px;
+}
+.maza-map .maza-tooltip .maza-popup strong {
+  color: #b19963;
+  letter-spacing: 0.05em;
+  font-size: 13px;
+}

@@ -44,8 +44,15 @@ export const MazaMap = () => {
 
     L.marker(POSITION, { icon: pin })
       .addTo(map)
-      .bindPopup(
-        '<div class="maza-popup"><strong>MAZA Vienna</strong><br/>Gunoldstraße 1 / Heiligenstädterstraße 78<br/>1190 Wien</div>'
+      .bindTooltip(
+        '<div class="maza-popup"><strong>MAZA Vienna</strong><br/>Gunoldstraße 1 / Heiligenstädterstraße 78<br/>1190 Wien</div>',
+        {
+          permanent: true,
+          direction: "top",
+          offset: [0, -44],
+          opacity: 1,
+          className: "maza-tooltip",
+        }
       );
 
     return () => {
