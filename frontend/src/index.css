@@ -132,8 +132,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   background: #071e19;
 }
 .maza-map .leaflet-tile {
-  filter: grayscale(0.35) sepia(0.5) hue-rotate(95deg) saturate(1.35)
-    brightness(0.72) contrast(1.05);
+  filter: grayscale(0.2) sepia(0.4) hue-rotate(95deg) saturate(1.2)
+    brightness(1.25) contrast(0.92);
 }
 .maza-map .leaflet-container {
   background: #071e19;
