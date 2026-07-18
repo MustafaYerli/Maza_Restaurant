@@ -67,7 +67,7 @@ const Gallery = () => {
                   src={img.src}
                   alt={img.alt}
                   loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-[1100ms] ease-out group-hover:scale-110"
                 />
                 <span className="absolute inset-0 bg-[#071E19]/0 group-hover:bg-[#071E19]/30 transition-colors duration-500" />
                 <span className="absolute inset-x-0 bottom-0 p-4 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">

@@ -1,0 +1,37 @@
+# Render Blueprint — MAZA Vienna (kostenlose Static Site)
+# Docs: https://render.com/docs/blueprint-spec
+#
+# Deployt das React-Frontend als statische Website.
+# SPA-Rewrite sorgt dafür, dass Routen wie /speisekarte auch bei direktem
+# Aufruf / Reload funktionieren (react-router).
+
+services:
+  - type: web
+    name: maza-vienna
+    runtime: static
+    rootDir: frontend
+    buildCommand: yarn install --frozen-lockfile && yarn build
+    staticPublishPath: build
+    pullRequestPreviewsEnabled: false
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
+      # Verhindert, dass CRA Build-Warnungen als Fehler behandelt
+      - key: CI
+        value: "false"
+    # Single-Page-App: alle Pfade auf index.html umleiten
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: X-Frame-Options
+        value: SAMEORIGIN
+      # Statische Assets langfristig cachen
+      - path: /static/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable

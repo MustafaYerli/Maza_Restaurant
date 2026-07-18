@@ -37,7 +37,7 @@ const Signature = () => {
                       <motion.img
                         src={dish.image}
                         alt={dish.name}
-                        className="w-full h-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#071E19]/60 to-transparent opacity-70" />
                       <span className="maza-heading absolute top-5 left-6 text-6xl md:text-7xl text-[#F3EFE6]/12 font-light">
