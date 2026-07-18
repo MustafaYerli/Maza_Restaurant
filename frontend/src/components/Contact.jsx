@@ -92,6 +92,8 @@ const Contact = () => {
                     key={s.name}
                     data-testid={`social-${s.name.toLowerCase()}`}
                     href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={s.name}
                     className="text-[#F3EFE6]/60 hover:text-[#B19963] transition-colors"
                   >

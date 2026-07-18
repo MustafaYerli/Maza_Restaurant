@@ -1,4 +1,5 @@
 import React from "react";
+import { Instagram } from "lucide-react";
 import { MazaLogo } from "./MazaLogo";
 import { OrientPattern } from "./Ornament";
 import { useNav } from "../hooks/useNav";
@@ -58,9 +59,13 @@ const Footer = () => {
                 <a
                   key={s.name}
                   href={s.href}
-                  className="maza-body text-[#F3EFE6]/60 text-sm hover:text-[#B19963] transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.name}
+                  data-testid={`footer-social-${s.name.toLowerCase()}`}
+                  className="text-[#F3EFE6]/60 hover:text-[#B19963] transition-colors"
                 >
-                  {s.name}
+                  <Instagram strokeWidth={1.2} size={22} />
                 </a>
               ))}
             </div>

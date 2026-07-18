@@ -168,8 +168,8 @@ export const GALLERY = [
 ];
 
 export const CONTACT = {
-  addressLabel: "Adresse (Platzhalter)",
-  address: "Musterstraße 1, 1010 Wien, Österreich",
+  addressLabel: "Adresse",
+  address: "Gunoldstraße 1 / Heiligenstädterstraße 78, 1190 Wien",
   phoneLabel: "Telefon (Platzhalter)",
   phone: "+43 1 000 00 00",
   emailLabel: "E-Mail (Platzhalter)",
@@ -181,8 +181,11 @@ export const CONTACT = {
   ],
   hoursNote: "Öffnungszeiten sind Platzhalter.",
   socials: [
-    { name: "Instagram", href: "#", icon: "Instagram" },
-    { name: "Facebook", href: "#", icon: "Facebook" },
+    {
+      name: "Instagram",
+      href: "https://www.instagram.com/maza.vienna/",
+      icon: "Instagram",
+    },
   ],
 };
 
