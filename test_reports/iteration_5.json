@@ -1,0 +1,21 @@
+{
+  "summary": "Frontend-only visual regression test of Hero descender clipping fix (MAZA Vienna). Verified on Desktop 1920 and Mobile 390. Descender of 'g' in 'Afghanische' is fully visible in both viewports. Mask wrapper computed styles confirm the fix is active (padding-bottom 18.72px, margin-bottom -18.72px, overflow hidden), giving ~18.7px of headroom below the text baseline so descenders are no longer clipped by overflow-hidden. Hero reveal animation still plays (mid-animation text slides up from mask), final state clean. Line spacing between the two title lines looks normal. No page/console errors. Sections #home, #menue, #reservierung, #kontakt render; Google Maps iframe present.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Reveal.jsx MaskedLines: Fix is correctly applied via 'pb-[0.18em] -mb-[0.18em]' on the overflow-hidden mask wrapper. Verified computed style paddingBottom=18.72px, marginBottom=-18.72px at 104px font-size. Descender fully within wrapper bounds (text.bottom=480, wrapper.bottom=498.72).",
+    "Minor console warning (non-blocking): framer-motion useScroll warns 'container has a non-static position' – originates from a scroll target somewhere; consider adding position:relative on the scroll container to silence."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Hero descender fix validated. Wrapper is the INNER span (block overflow-hidden pb-[0.18em] -mb-[0.18em]) that directly wraps each motion.span line, NOT the outer MaskedLines span. When probing bounding boxes, select via 'h1 span.block.overflow-hidden' to inspect the mask wrapper directly."
+}
