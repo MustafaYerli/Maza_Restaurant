@@ -56,7 +56,7 @@ const Hero = () => {
 
         <h1 className="maza-heading text-[#F3EFE6] font-light leading-[0.95] text-5xl sm:text-6xl md:text-7xl lg:text-[6.5rem]">
           <MaskedLines
-            lines={["Afghanische Tradition.", "Modern interpretiert."]}
+            lines={["Das Herz Asiens,", "serviert in Wien"]}
             delay={0.35}
           />
         </h1>

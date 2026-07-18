@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { MazaLogo } from "./MazaLogo";
+import { HalalBadge } from "./HalalBadge";
 import { useNav } from "../hooks/useNav";
 import { useScrollSpy } from "../hooks/useScrollSpy";
 import { NAV_LINKS } from "../data/content";
@@ -44,9 +45,12 @@ const Header = () => {
         }`}
       >
         <div className="mx-auto max-w-7xl px-5 md:px-10 flex items-center justify-between">
-          <button data-testid="logo-home" onClick={() => go("#home")} aria-label="Zur Startseite">
-            <MazaLogo />
-          </button>
+          <div className="flex items-center">
+            <button data-testid="logo-home" onClick={() => go("#home")} aria-label="Zur Startseite">
+              <MazaLogo />
+            </button>
+            <HalalBadge />
+          </div>
 
           <nav className="hidden lg:flex items-center gap-9">
             {NAV_LINKS.map((l) => {
