@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Reveal, GoldRule } from "./Reveal";
 import { IMAGES } from "../data/content";
 
-const TAGS = ["Tradition", "Kultur", "Gastfreundschaft", "Qualität"];
+const TAGS = ["Herkunft", "Handschrift", "Jahreszeit", "Gastlichkeit"];
 
 const About = () => {
   const ref = useRef(null);
@@ -24,23 +24,26 @@ const About = () => {
           </Reveal>
           <Reveal delay={0.05}>
             <h2 className="maza-heading text-4xl md:text-5xl lg:text-6xl font-light text-[#F3EFE6] leading-tight">
-              Mehr als ein Restaurant
+              Zwei Heimaten auf einem Teller
             </h2>
           </Reveal>
           <GoldRule className="my-8" width="5rem" />
           <Reveal delay={0.1}>
             <p className="maza-body text-[#F3EFE6]/75 text-base md:text-lg font-light leading-relaxed">
-              MAZA Vienna verbindet die kulinarische Vielfalt Afghanistans mit einem
-              modernen und eleganten Restauranterlebnis. Traditionelle Rezepte,
-              ausgewählte Zutaten und herzliche Gastfreundschaft bilden die Grundlage
-              unserer Küche.
+              Jedes Gericht bei MAZA Vienna trägt die Erinnerung an weite Wege in
+              sich – an die Basare Kabuls, an Rezepte, die von Großmüttern an
+              Töchter weitergereicht wurden, an das langsame Garen über offener
+              Glut. Wir bewahren diese Geschichten und erzählen sie am Tisch neu.
             </p>
           </Reveal>
           <Reveal delay={0.18}>
             <p className="maza-body text-[#F3EFE6]/60 text-base font-light leading-relaxed mt-6">
-              Für uns beginnt Gastfreundschaft am gemeinsamen Tisch. Ein Mahl ist ein
-              Moment des Zusammenkommens – getragen von Kultur, Wärme und der Freude,
-              zu teilen. Genau diese Haltung tragen wir in jedes Gericht.
+              Und doch wurzelt unsere Küche im Hier: Was auf den Teller kommt,
+              reift auf österreichischen Feldern. Gemüse, Kräuter und Fleisch
+              beziehen wir von Bäuerinnen und Bauern aus der Region – im Rhythmus
+              der Jahreszeiten geerntet, mit Sorgfalt verarbeitet. So begegnen
+              sich afghanische Tradition und heimische Frische in einem einzigen
+              Augenblick des Genusses.
             </p>
           </Reveal>
           <Reveal delay={0.24}>
