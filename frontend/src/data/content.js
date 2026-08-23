@@ -44,7 +44,7 @@ export const SIGNATURE_DISHES = [
     tagline: "Das Nationalgericht",
     description:
       "Duftender Basmatireis mit zart geschmortem Lamm, karamellisierten Karotten und Rosinen – langsam gegart nach überlieferter Tradition.",
-    price: "€ 24",
+    price: "€ 17,90",
     image: IMAGES.dishQabeli,
   },
   {
@@ -53,7 +53,7 @@ export const SIGNATURE_DISHES = [
     tagline: "Handgefaltet",
     description:
       "Zarte Teigtaschen mit gewürztem Rindfleisch, verfeinert mit Knoblauchjoghurt, einer Sauce aus gelben Erbsen und getrockneter Minze.",
-    price: "€ 18",
+    price: "€ 16,90",
     image: IMAGES.dishMantu,
   },
   {
@@ -62,7 +62,7 @@ export const SIGNATURE_DISHES = [
     tagline: "Über offener Glut",
     description:
       "Über offener Flamme gegrillte Lammspieße auf Safranreis, begleitet von hausgebackenem Fladenbrot und Sumach-Zwiebeln.",
-    price: "€ 26",
+    price: "€ 18,90",
     image: IMAGES.dishKebab,
   },
   {
@@ -71,7 +71,7 @@ export const SIGNATURE_DISHES = [
     tagline: "Vegetarisch",
     description:
       "Knusprig gebackenes Fladenbrot, gefüllt mit Kartoffeln und frischen Kräutern, serviert mit kühlem Minzjoghurt.",
-    price: "€ 14",
+    price: "€ 2,90",
     image: IMAGES.dishBolani,
   },
 ];
