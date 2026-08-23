@@ -1,12 +1,42 @@
 import React from "react";
-import { MapPin, Phone, Mail, Clock, Instagram, Facebook } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Instagram, Facebook, Map as MapIcon } from "lucide-react";
+import { acceptCategory, showPreferences } from "../lib/cc";
 import { Reveal, GoldRule } from "./Reveal";
 import { MazaMap } from "./MazaMap";
+import { useConsent } from "../hooks/useConsent";
 import { CONTACT } from "../data/content";
 
 const SOCIAL_ICONS = { Instagram, Facebook };
 
+const MapPlaceholder = () => (
+  <div
+    data-testid="map-consent-placeholder"
+    className="absolute inset-0 flex flex-col items-center justify-center text-center px-8 gap-5"
+  >
+    <MapIcon className="text-[#B19963]" strokeWidth={1} size={40} />
+    <p className="maza-body text-[#F3EFE6]/70 text-sm font-light max-w-xs leading-relaxed">
+      Zum Anzeigen der interaktiven Karte ist Ihre Zustimmung für externe Medien
+      erforderlich. Dabei wird Ihre IP-Adresse an den Kartenanbieter übertragen.
+    </p>
+    <button
+      data-testid="map-consent-accept-btn"
+      onClick={() => acceptCategory(["functional"])}
+      className="maza-body text-xs tracking-[0.22em] uppercase px-8 py-3.5 bg-[#B19963] text-[#071E19] hover:bg-[#c5ac74] transition-colors duration-300"
+    >
+      Karte aktivieren
+    </button>
+    <button
+      data-testid="map-consent-settings-btn"
+      onClick={() => showPreferences()}
+      className="maza-body text-[11px] tracking-[0.18em] uppercase text-[#F3EFE6]/45 hover:text-[#B19963] transition-colors"
+    >
+      Datenschutz-Einstellungen
+    </button>
+  </div>
+);
+
 const Contact = () => {
+  const mapAllowed = useConsent("functional");
   return (
     <section id="kontakt" data-testid="contact-section" className="relative py-24 md:py-36">
       <div className="mx-auto max-w-7xl px-5 md:px-10 grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
@@ -111,7 +141,7 @@ const Contact = () => {
             data-testid="map-container"
             className="relative aspect-[4/5] lg:aspect-square border border-[#B19963]/25 bg-[#08231D] overflow-hidden"
           >
-            <MazaMap />
+            {mapAllowed ? <MazaMap /> : <MapPlaceholder />}
           </div>
         </Reveal>
       </div>

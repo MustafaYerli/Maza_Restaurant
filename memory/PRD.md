@@ -52,8 +52,28 @@ Editorial-Layouts. Deutschsprachig. Statisches Frontend, keine erfundenen Fakten
 - Reservierungsformular (`Reservation.jsx`): Felder mit `.maza-field` Fokus-Schein; Erfolgsanimation neu gestaffelt (Spring-Check-Icon + einlaufende Texte).
 - „Nach oben"-Button (`components/BackToTop.jsx`): erscheint > 700px, scrollt via Lenis nach oben.
 
+## Iteration 5 (2026-06) — Echte Speisekarte + Cookie-Consent/DSGVO
+- Speisekarte (`content.js` MENU + `Speisekarte.jsx`): echte Gerichte in 8 Kategorien
+  (Suppen, Vorspeisen, Hauptspeisen, Saucen, Kindermenü, Beilagen, Salat, Nachspeisen)
+  mit echten Preisen. Allergen-Codes (A/C/G/H/L) je Gericht + Allergen-Legende (`ALLERGENS`).
+  „2x" aus Namen in Beschreibung („2 Stück") verschoben. Platzhalter-Hinweis in MenuPreview entfernt.
+- Cookie-Consent (orestbida/cookieconsent v3.1.0), SELBST GEHOSTET unter
+  `public/vendor/cookieconsent/` (umd.js + css), eingebunden in `public/index.html`.
+  Grund: CRA/Babel-Bundling ist nicht die Ursache — Banner erschien nicht, weil `hideFromBots`
+  (Default true) Automatisierung via `navigator.webdriver` ausblendet. Fix: `hideFromBots:false`.
+  - Config: `src/config/cookieConsentConfig.js` (DE, Markendesign, Kategorien: necessary readonly + functional).
+  - Theme: `src/styles/cookieconsent-theme.css` (Dunkelgrün/Gold CSS-Variablen, #cc-main scoped).
+  - Wrapper `src/lib/cc.js` (window.CookieConsent), Hook `src/hooks/useConsent.js` (Event `cc:consent-updated`).
+  - Init in `App.js` via Poll auf window.CookieConsent.run.
+- Karte (Leaflet/CARTO) DSGVO-konform hinter Einwilligung: `Contact.jsx` zeigt Platzhalter
+  („Karte aktivieren") bis Kategorie `functional` akzeptiert → dann MazaMap.
+- Datenschutzerklärung: neue Seite `src/pages/Datenschutz.jsx` (Route `/datenschutz`), Footer-Links
+  „Datenschutz" → /datenschutz, „Cookie-Einstellungen" → showPreferences().
+- Verifiziert per Screenshot: Banner + Preferences-Modal (Markendesign), Karten-Consent-Flow (Platzhalter→Karte).
+
 ## Backlog / Next
-- P1: Echte Restaurant-Fotos, echte Adresse/Öffnungszeiten/Preise ersetzen die Platzhalter.
-- P1: Header optional komplett transparent am Seitenanfang — kosmetisch.
-- P2: Echte Impressum-/Datenschutz-/Cookie-Seiten & DSGVO-konformes Maps-Consent-Loading.
+- P1: Echte Restaurant-Fotos ersetzen die Menü-/Galerie-Mockups (Kundendaten ausstehend).
+- P1: Signature Dishes (Startseite) zeigen noch alte Beispielpreise — an Karte angleichen?
+- P2: Getränkekarte ergänzen (in echter Liste nicht enthalten).
+- P2: Google Fonts selbst hosten (IP-Transfer an Google vermeiden).
 - P2: Mehrsprachigkeit (EN).

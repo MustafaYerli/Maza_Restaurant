@@ -1,0 +1,62 @@
+/* Markendesign-Overrides für vanilla-cookieconsent (MAZA Vienna). */
+#cc-main {
+  --cc-font-family: "Jost", ui-sans-serif, system-ui, sans-serif;
+
+  --cc-bg: #08231d;
+  --cc-primary-color: #f3efe6;
+  --cc-secondary-color: rgba(243, 239, 230, 0.6);
+
+  --cc-btn-primary-bg: #b19963;
+  --cc-btn-primary-color: #071e19;
+  --cc-btn-primary-border-color: #b19963;
+  --cc-btn-primary-hover-bg: #c5ac74;
+  --cc-btn-primary-hover-color: #071e19;
+  --cc-btn-primary-hover-border-color: #c5ac74;
+
+  --cc-btn-secondary-bg: transparent;
+  --cc-btn-secondary-color: #f3efe6;
+  --cc-btn-secondary-border-color: rgba(177, 153, 99, 0.5);
+  --cc-btn-secondary-hover-bg: rgba(177, 153, 99, 0.12);
+  --cc-btn-secondary-hover-color: #f3efe6;
+  --cc-btn-secondary-hover-border-color: #b19963;
+
+  --cc-separator-border-color: rgba(177, 153, 99, 0.18);
+
+  --cc-toggle-on-bg: #b19963;
+  --cc-toggle-off-bg: rgba(243, 239, 230, 0.25);
+  --cc-toggle-on-knob-bg: #071e19;
+  --cc-toggle-off-knob-bg: #f3efe6;
+  --cc-toggle-readonly-bg: rgba(177, 153, 99, 0.35);
+  --cc-toggle-readonly-knob-bg: #08231d;
+
+  --cc-cookie-category-block-bg: rgba(255, 255, 255, 0.03);
+  --cc-cookie-category-block-border: rgba(177, 153, 99, 0.16);
+  --cc-cookie-category-block-hover-bg: rgba(177, 153, 99, 0.08);
+  --cc-cookie-category-block-hover-border: rgba(177, 153, 99, 0.3);
+
+  --cc-overlay-bg: rgba(5, 15, 12, 0.7);
+  --cc-footer-bg: #061a15;
+  --cc-footer-border-color: rgba(177, 153, 99, 0.18);
+  --cc-link-color: #b19963;
+
+  --cc-btn-border-radius: 0px;
+  --cc-modal-border-radius: 0px;
+}
+
+#cc-main .cm__title,
+#cc-main .pm__title,
+#cc-main .pm__section-title {
+  font-family: "Cormorant Garamond", ui-serif, Georgia, serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+#cc-main .cm,
+#cc-main .pm {
+  border: 1px solid rgba(177, 153, 99, 0.25);
+}
+
+#cc-main a {
+  text-decoration: none;
+  border-bottom: 1px solid rgba(177, 153, 99, 0.4);
+}

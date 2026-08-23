@@ -1,5 +1,6 @@
 import React from "react";
 import { Instagram } from "lucide-react";
+import { showPreferences } from "../lib/cc";
 import { MazaLogo } from "./MazaLogo";
 import { OrientPattern } from "./Ornament";
 import { useNav } from "../hooks/useNav";
@@ -7,8 +8,8 @@ import { NAV_LINKS, CONTACT } from "../data/content";
 
 const LEGAL = [
   { label: "Impressum", href: "/impressum" },
-  { label: "Datenschutz", href: "#" },
-  { label: "Cookie-Einstellungen", href: "#" },
+  { label: "Datenschutz", href: "/datenschutz" },
+  { label: "Cookie-Einstellungen", action: "cookies" },
 ];
 
 const Footer = () => {
@@ -85,7 +86,11 @@ const Footer = () => {
               <li key={l.label}>
                 <button
                   data-testid={`footer-legal-${l.label.toLowerCase().replace(/[^a-z]/g, "")}`}
-                  onClick={() => (l.href.startsWith("/") ? go(l.href) : null)}
+                  onClick={() =>
+                    l.action === "cookies"
+                      ? showPreferences()
+                      : go(l.href)
+                  }
                   className="maza-body text-[#F3EFE6]/40 text-xs hover:text-[#B19963] transition-colors"
                 >
                   {l.label}

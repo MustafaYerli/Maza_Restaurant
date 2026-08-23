@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import Lenis from "lenis";
 import { MotionConfig } from "framer-motion";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "@/styles/cookieconsent-theme.css";
+import cookieConsentConfig from "@/config/cookieConsentConfig";
 import "@/App.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -10,8 +12,21 @@ import BackToTop from "@/components/BackToTop";
 import Home from "@/pages/Home";
 import Speisekarte from "@/pages/Speisekarte";
 import Impressum from "@/pages/Impressum";
+import Datenschutz from "@/pages/Datenschutz";
 
 function App() {
+  useEffect(() => {
+    let tries = 0;
+    const init = () => {
+      if (window.CookieConsent?.run) {
+        window.CookieConsent.run(cookieConsentConfig);
+      } else if (tries++ < 50) {
+        setTimeout(init, 100);
+      }
+    };
+    init();
+  }, []);
+
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced) return;
@@ -46,6 +61,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/speisekarte" element={<Speisekarte />} />
             <Route path="/impressum" element={<Impressum />} />
+            <Route path="/datenschutz" element={<Datenschutz />} />
           </Routes>
           <Footer />
           <BackToTop />
