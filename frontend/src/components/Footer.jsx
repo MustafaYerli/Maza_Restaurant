@@ -5,7 +5,11 @@ import { OrientPattern } from "./Ornament";
 import { useNav } from "../hooks/useNav";
 import { NAV_LINKS, CONTACT } from "../data/content";
 
-const LEGAL = ["Impressum", "Datenschutz", "Cookie-Einstellungen"];
+const LEGAL = [
+  { label: "Impressum", href: "/impressum" },
+  { label: "Datenschutz", href: "#" },
+  { label: "Cookie-Einstellungen", href: "#" },
+];
 
 const Footer = () => {
   const go = useNav();
@@ -78,14 +82,14 @@ const Footer = () => {
           </p>
           <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
             {LEGAL.map((l) => (
-              <li key={l}>
-                <a
-                  data-testid={`footer-legal-${l.toLowerCase().replace(/[^a-z]/g, "")}`}
-                  href="#"
+              <li key={l.label}>
+                <button
+                  data-testid={`footer-legal-${l.label.toLowerCase().replace(/[^a-z]/g, "")}`}
+                  onClick={() => (l.href.startsWith("/") ? go(l.href) : null)}
                   className="maza-body text-[#F3EFE6]/40 text-xs hover:text-[#B19963] transition-colors"
                 >
-                  {l}
-                </a>
+                  {l.label}
+                </button>
               </li>
             ))}
           </ul>

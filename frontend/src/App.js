@@ -9,6 +9,7 @@ import Preloader from "@/components/Preloader";
 import BackToTop from "@/components/BackToTop";
 import Home from "@/pages/Home";
 import Speisekarte from "@/pages/Speisekarte";
+import Impressum from "@/pages/Impressum";
 
 function App() {
   useEffect(() => {
@@ -44,6 +45,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/speisekarte" element={<Speisekarte />} />
+            <Route path="/impressum" element={<Impressum />} />
           </Routes>
           <Footer />
           <BackToTop />

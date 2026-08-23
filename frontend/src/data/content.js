@@ -189,5 +189,24 @@ export const CONTACT = {
   ],
 };
 
+export const IMPRESSUM = {
+  companyName: "Shehad Gastro GmbH",
+  address: "Heiligenstädterstraße 87, 1190 Wien",
+  country: "Österreich",
+  uid: "ATU80895925",
+  // PLATZHALTER — bitte mit den offiziellen Daten ergänzen:
+  fnNumber: "FN — (bitte ergänzen)",
+  fnCourt: "Handelsgericht Wien",
+  management: "(Geschäftsführer:in – bitte ergänzen)",
+  email: "office@maza-vienna.at",
+  phone: "+43 1 000 00 00",
+  businessObject: "Gastronomie / Restaurantbetrieb",
+  chamber: "Wirtschaftskammer Wien, Fachgruppe Gastronomie",
+  tradeLaw: "Gewerbeordnung 1994 (GewO), abrufbar unter www.ris.bka.gv.at",
+  supervisoryAuthority:
+    "Magistratisches Bezirksamt für den 19. Bezirk (Gewerbebehörde)",
+  osPlatform: "https://ec.europa.eu/consumers/odr",
+};
+
 export const LAZYFORMS_ENDPOINT =
   "https://api.lazyforms.com/f/a2c063a6-e789-4627-861b-62538523bd1c";
