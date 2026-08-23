@@ -195,9 +195,9 @@ export const IMPRESSUM = {
   country: "Österreich",
   uid: "ATU80895925",
   // PLATZHALTER — bitte mit den offiziellen Daten ergänzen:
-  fnNumber: "FN — (bitte ergänzen)",
+  fnNumber: "FN 631698v",
   fnCourt: "Handelsgericht Wien",
-  management: "(Geschäftsführer:in – bitte ergänzen)",
+  management: "Ramin Shehad",
   email: "office@maza-vienna.at",
   phone: "+43 1 000 00 00",
   businessObject: "Gastronomie / Restaurantbetrieb",

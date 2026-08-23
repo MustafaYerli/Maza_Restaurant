@@ -114,9 +114,9 @@ export default function Impressum() {
 
         <Reveal>
           <p className="maza-body text-[#F3EFE6]/40 text-xs mt-4">
-            Hinweis: Mit „(bitte ergänzen)" markierte Angaben (z. B. Firmenbuchnummer und
-            Geschäftsführung) sollten vor der Veröffentlichung mit den offiziellen
-            Firmenbuchdaten vervollständigt werden.
+            Hinweis: E-Mail-Adresse und Telefonnummer sind derzeit Platzhalter und
+            sollten vor der Veröffentlichung durch die offiziellen Kontaktdaten der
+            Gesellschaft ersetzt werden.
           </p>
         </Reveal>
 
