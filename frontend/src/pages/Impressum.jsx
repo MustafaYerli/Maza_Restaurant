@@ -114,9 +114,8 @@ export default function Impressum() {
 
         <Reveal>
           <p className="maza-body text-[#F3EFE6]/40 text-xs mt-4">
-            Hinweis: E-Mail-Adresse und Telefonnummer sind derzeit Platzhalter und
-            sollten vor der Veröffentlichung durch die offiziellen Kontaktdaten der
-            Gesellschaft ersetzt werden.
+            Alle Angaben in diesem Impressum entsprechen den offiziellen
+            Unternehmensdaten der Shehad Gastro GmbH.
           </p>
         </Reveal>
 
