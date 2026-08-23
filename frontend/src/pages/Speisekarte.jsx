@@ -4,7 +4,7 @@ import { ArrowLeft, MoveHorizontal } from "lucide-react";
 import { useNav } from "@/hooks/useNav";
 import { Reveal, GoldRule } from "@/components/Reveal";
 import { OrientPattern, OrnamentDivider } from "@/components/Ornament";
-import { MENU, MENU_IMAGE } from "@/data/content";
+import { MENU, MENU_IMAGE, ALLERGENS } from "@/data/content";
 
 const CategoryBar = ({ active, onJump }) => {
   const scroller = useRef(null);
@@ -128,8 +128,8 @@ export default function Speisekarte() {
           <GoldRule className="my-8" width="6rem" />
           <Reveal delay={0.1}>
             <p className="maza-body text-[#F3EFE6]/65 text-base md:text-lg font-light max-w-2xl">
-              Eine Auswahl afghanischer Spezialitäten – von Vorspeisen über Töpfe und
-              Grillgerichte bis zu Desserts und Getränken.
+              Eine Auswahl afghanischer Spezialitäten – von Suppen und Vorspeisen über
+              herzhafte Hauptgerichte und Grillspieße bis zu hausgemachten Nachspeisen.
             </p>
           </Reveal>
         </div>
@@ -168,12 +168,19 @@ export default function Speisekarte() {
                     <div className="flex-1 min-w-0">
                       <h3 className="maza-heading text-xl md:text-2xl text-[#F3EFE6] font-light">
                         {item.name}
+                        {item.allergens?.length > 0 && (
+                          <span className="maza-body text-[#B19963]/70 text-xs md:text-sm align-middle ml-2">
+                            ({item.allergens.join(", ")})
+                          </span>
+                        )}
                       </h3>
-                      <p className="maza-body text-[#F3EFE6]/55 text-sm md:text-base font-light mt-1">
-                        {item.desc}
-                      </p>
+                      {item.desc && (
+                        <p className="maza-body text-[#F3EFE6]/55 text-sm md:text-base font-light mt-1">
+                          {item.desc}
+                        </p>
+                      )}
                     </div>
-                    <span className="maza-heading text-xl md:text-2xl text-[#B19963] shrink-0">
+                    <span className="maza-heading text-lg md:text-2xl text-[#B19963] shrink-0 text-right">
                       {item.price}
                     </span>
                   </div>
@@ -184,9 +191,25 @@ export default function Speisekarte() {
         ))}
 
         <OrnamentDivider />
+
+        {/* Allergen-Legende */}
+        <div data-testid="allergen-legend" className="border border-[#B19963]/20 bg-[#0A2A22]/40 px-6 py-7 md:px-10 md:py-9">
+          <p className="maza-body text-[#B19963] text-xs tracking-[0.28em] uppercase mb-5">
+            Allergen-Kennzeichnung
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-3">
+            {Object.entries(ALLERGENS).map(([code, label]) => (
+              <div key={code} className="flex items-baseline gap-3">
+                <span className="maza-heading text-[#B19963] text-base w-5 shrink-0">{code}</span>
+                <span className="maza-body text-[#F3EFE6]/65 text-sm font-light">{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <p className="maza-body text-center text-[#F3EFE6]/40 text-xs tracking-wide">
-          Alle Gerichte, Beschreibungen und Preise sind Platzhalter und werden laufend
-          aktualisiert. Die Bilder sind Mockups.
+          Alle Preise inkl. gesetzlicher Umsatzsteuer. Die abgebildeten Speisefotos sind
+          symbolische Darstellungen. Änderungen und Irrtümer vorbehalten.
         </p>
         <div className="text-center">
           <button
