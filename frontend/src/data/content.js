@@ -170,10 +170,10 @@ export const GALLERY = [
 export const CONTACT = {
   addressLabel: "Adresse",
   address: "Gunoldstraße 1 / Heiligenstädterstraße 78, 1190 Wien",
-  phoneLabel: "Telefon (Platzhalter)",
-  phone: "+43 1 000 00 00",
-  emailLabel: "E-Mail (Platzhalter)",
-  email: "reservierung@maza-vienna.at",
+  phoneLabel: "Telefon",
+  phone: "+43 676 7222182",
+  emailLabel: "E-Mail",
+  email: "office@mazavienna.at",
   hours: [
     { day: "Dienstag – Donnerstag", time: "17:00 – 23:00" },
     { day: "Freitag – Samstag", time: "17:00 – 00:00" },
