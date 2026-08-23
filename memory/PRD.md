@@ -77,3 +77,9 @@ Editorial-Layouts. Deutschsprachig. Statisches Frontend, keine erfundenen Fakten
 - P2: Getränkekarte ergänzen (in echter Liste nicht enthalten).
 - P2: Google Fonts selbst hosten (IP-Transfer an Google vermeiden).
 - P2: Mehrsprachigkeit (EN).
+
+## Deploy-Fix (Juni 2026)
+- Render-Build brach ab: "lockfile needs to be updated (--frozen-lockfile)".
+- Ursache: package.json enthielt `vanilla-cookieconsent@3.1.0`, committete frontend/yarn.lock hatte den Eintrag nicht.
+- Fix: yarn.lock synchronisiert (Eintrag ergänzt); überflüssige leere Root-yarn.lock entfernt. Exakter Render-Build lokal verifiziert + deployment_agent PASS.
+- WICHTIG: Nutzer muss die aktualisierte frontend/yarn.lock via "Save to Github" pushen und dann auf Render neu deployen.
