@@ -74,11 +74,7 @@ const MenuPreview = () => {
         </div>
 
         <Reveal>
-          <p className="maza-body text-center text-[#F3EFE6]/40 text-xs tracking-wide mt-14">
-            Alle Gerichte, Beschreibungen und Preise sind Platzhalter und werden laufend
-            aktualisiert.
-          </p>
-          <div className="text-center mt-8">
+          <div className="text-center mt-14">
             <button
               data-testid="full-menu-btn"
               onClick={() => go("/speisekarte")}
