@@ -175,11 +175,9 @@ export const CONTACT = {
   emailLabel: "E-Mail",
   email: "office@mazavienna.at",
   hours: [
-    { day: "Dienstag – Donnerstag", time: "17:00 – 23:00" },
-    { day: "Freitag – Samstag", time: "17:00 – 00:00" },
-    { day: "Sonntag – Montag", time: "Ruhetag" },
+    { day: "Montag – Sonntag", time: "11:00 – 22:00" },
   ],
-  hoursNote: "Öffnungszeiten sind Platzhalter.",
+  hoursNote: "Täglich geöffnet.",
   socials: [
     {
       name: "Instagram",
